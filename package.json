@@ -1,0 +1,33 @@
+{
+  "name": "xion-deployed-contracts",
+  "version": "1.0.0",
+  "description": "Registry of deployed contracts on Xion blockchain",
+  "main": "index.js",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "verify": "node scripts/verify-contracts.js",
+    "migrate-testnet": "tsx scripts/migrate-to-testnet.ts",
+    "build-site": "node scripts/build-site.js",
+    "serve": "npx http-server docs -p 8080"
+  },
+  "keywords": [
+    "xion",
+    "cosmwasm",
+    "smart-contracts",
+    "blockchain"
+  ],
+  "author": "Burnt Labs",
+  "license": "MIT",
+  "dependencies": {
+    "@cosmjs/cosmwasm-stargate": "^0.33.1",
+    "@cosmjs/proto-signing": "^0.33.1",
+    "@cosmjs/stargate": "^0.33.1",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "http-server": "^14.1.1",
+    "tsx": "^4.7.1"
+  }
+}

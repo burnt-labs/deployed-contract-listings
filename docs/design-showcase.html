@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xion Design System Showcase</title>
+    <link rel="stylesheet" href="xion-design-system.css">
+    <style>
+        .showcase-section {
+            margin-bottom: var(--xion-spacing-3xl);
+            padding: var(--xion-spacing-2xl) 0;
+            border-bottom: 1px solid var(--xion-border);
+        }
+        
+        .showcase-title {
+            font-size: var(--xion-font-size-2xl);
+            margin-bottom: var(--xion-spacing-xl);
+            color: var(--xion-primary-text);
+            font-weight: 700;
+        }
+        
+        .showcase-subtitle {
+            font-size: var(--xion-font-size-lg);
+            margin-bottom: var(--xion-spacing-lg);
+            color: var(--xion-secondary-text);
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--xion-spacing-xl);
+            margin-bottom: var(--xion-spacing-xl);
+        }
+        
+        .example-modal {
+            display: none;
+        }
+        
+        .example-modal.active {
+            display: flex;
+        }
+        
+        .color-swatch {
+            display: flex;
+            align-items: center;
+            gap: var(--xion-spacing-md);
+            padding: var(--xion-spacing-md);
+            background: var(--xion-glass-bg);
+            border-radius: var(--xion-radius-md);
+            backdrop-filter: blur(20px);
+        }
+        
+        .color-box {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--xion-radius-sm);
+            border: 1px solid var(--xion-border);
+        }
+        
+        .demo-input-container {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="ui-nav">
+        <div class="ui-nav-container">
+            <div class="ui-nav-brand" style="display: flex; align-items: center; gap: 0.75rem;">
+                <img src="xion-logo.png" alt="Xion Logo" class="ui-logo">
+                <span class="ui-network-badge ui-network-mainnet">DESIGN SYSTEM</span>
+            </div>
+            <div class="ui-nav-menu">
+                <a href="#branding" class="ui-nav-link active">Branding</a>
+                <a href="#colors" class="ui-nav-link">Colors</a>
+                <a href="#typography" class="ui-nav-link">Typography</a>
+                <a href="#buttons" class="ui-nav-link">Buttons</a>
+                <a href="#forms" class="ui-nav-link">Forms</a>
+                <a href="#cards" class="ui-nav-link">Cards</a>
+                <a href="xion-icon.html" class="ui-nav-link">Icon</a>
+                <a href="index.html" class="ui-nav-link">Back to App</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ui-container">
+        <!-- Hero Section -->
+        <section class="showcase-section" style="text-align: center; padding: var(--xion-spacing-3xl) 0;">
+            <h1 class="ui-heading-1 ui-mb-lg">Xion Dashboard Design System</h1>
+            <p class="ui-text-secondary" style="font-size: var(--xion-font-size-lg); max-width: 600px; margin: 0 auto;">
+                A modern, dark-themed crypto/Web3 design system with sophisticated glassmorphic aesthetics
+            </p>
+            <div class="ui-mt-xl">
+                <span class="ui-gradient-text" style="font-size: var(--xion-font-size-xl); font-weight: 700;">
+                    Pure CSS • No Tailwind • GitHub Pages Ready
+                </span>
+            </div>
+        </section>
+
+        <!-- Branding Section -->
+        <section id="branding" class="showcase-section">
+            <h2 class="showcase-title">Logo & Brand Elements</h2>
+            <div class="component-grid">
+                <div class="ui-glass-panel ui-p-lg">
+                    <h3 class="ui-heading-3 ui-mb-md">Primary Logo</h3>
+                    <div class="ui-mb-md" style="background: rgba(0, 0, 0, 0.5); padding: 2rem; border-radius: var(--xion-radius-md); display: flex; justify-content: center;">
+                        <img src="xion-logo.png" alt="Xion Logo" class="ui-logo" style="width: 120px; height: auto;">
+                    </div>
+                    <p class="ui-small-text ui-text-secondary">90px × 32px (maintain aspect ratio)</p>
+                </div>
+                
+                <div class="ui-glass-panel ui-p-lg">
+                    <h3 class="ui-heading-3 ui-mb-md">Icon Logo</h3>
+                    <div class="ui-mb-md" style="display: flex; gap: 1rem; align-items: center;">
+                        <div class="ui-logo-icon">
+                            <svg width="24" height="24" viewBox="0 0 105 203" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M31.256 112.386C15.14 93.748 8.18 77.046 8.18 60.587C8.18 50.905 9.279 44.732 10.622 39.165C2.686 55.746 0 68.211 0 79.951C0 142.038 57.384 150.026 57.384 193.958C57.384 204.609 51.767 219.011 32.599 246C90.349 169.632 105 142.159 105 123.037C105 69.664 47.86 60.708 47.86 0.678C47.86 -12.998 55.797 -29.457 70.57 -51C70.57 -51 56.529 -31.394 48.959 -20.985C21.977 16.291 11.477 64.702 31.378 112.386H31.256Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="ui-small-text">40px × 40px</p>
+                            <p class="ui-small-text ui-text-secondary">Rounded corners (20px)</p>
+                        </div>
+                    </div>
+                    <code class="ui-small-text">.ui-logo-icon</code>
+                </div>
+                
+                <div class="ui-glass-panel ui-p-lg">
+                    <h3 class="ui-heading-3 ui-mb-md">Network Badges</h3>
+                    <div class="ui-flex ui-gap-sm ui-mb-md">
+                        <span class="ui-network-badge ui-network-mainnet">MAINNET</span>
+                        <span class="ui-network-badge ui-network-testnet">TESTNET</span>
+                    </div>
+                    <p class="ui-small-text ui-text-secondary">Always pair with logo to indicate environment</p>
+                </div>
+                
+                <div class="ui-glass-panel ui-p-lg">
+                    <h3 class="ui-heading-3 ui-mb-md">Logo Usage</h3>
+                    <div class="ui-mb-md">
+                        <div class="ui-logo-container ui-mb-md" style="padding: 1rem; background: rgba(0, 0, 0, 0.3); border-radius: var(--xion-radius-md);">
+                            <img src="xion-logo.png" alt="Xion Logo" class="ui-logo">
+                            <span class="ui-network-badge ui-network-mainnet">MAINNET</span>
+                        </div>
+                        <div class="ui-logo-container" style="padding: 1rem; background: rgba(0, 0, 0, 0.3); border-radius: var(--xion-radius-md);">
+                            <img src="xion-logo.png" alt="Xion Logo" class="ui-logo">
+                            <span class="ui-network-badge ui-network-testnet">TESTNET</span>
+                        </div>
+                    </div>
+                    <code class="ui-small-text">.ui-logo-container</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colors Section -->
+        <section id="colors" class="showcase-section">
+            <h2 class="showcase-title">Color Palette</h2>
+            <div class="component-grid">
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-background);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Background</div>
+                        <code>#121212</code>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-primary-text);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Primary Text</div>
+                        <code>#FFFFFF</code>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-secondary-text);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Secondary Text</div>
+                        <code>#8D8D8D</code>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-destructive);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Destructive/Error</div>
+                        <code>#D74506</code>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-warning);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Warning</div>
+                        <code>#E8B931</code>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-success);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Success/Mainnet</div>
+                        <code>#CAF033</code>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-testnet);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Testnet</div>
+                        <code>#FFAA4A</code>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background: var(--xion-gradient);"></div>
+                    <div>
+                        <div class="ui-small-text ui-text-secondary">Gradient Accent</div>
+                        <code>Conic</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section id="typography" class="showcase-section">
+            <h2 class="showcase-title">Typography</h2>
+            <div class="ui-mb-xl">
+                <h1 class="ui-heading-1">Heading 1 - AkkuratLL Bold</h1>
+                <h2 class="ui-heading-2 ui-mt-md">Heading 2 - AkkuratLL Bold</h2>
+                <h3 class="ui-heading-3 ui-mt-md">Heading 3 - AkkuratLL Semi-Bold</h3>
+                <p class="ui-nav-text ui-mt-md">NAVIGATION TEXT - UPPERCASE</p>
+                <p class="ui-body-text ui-mt-md">Body text - This is regular body text using AkkuratLL Regular at 16px with proper line height for readability.</p>
+                <p class="ui-small-text ui-text-secondary ui-mt-md">Small text - Secondary information displayed at 14px</p>
+            </div>
+        </section>
+
+        <!-- Buttons Section -->
+        <section id="buttons" class="showcase-section">
+            <h2 class="showcase-title">Button Components</h2>
+            <div class="ui-mb-lg">
+                <h3 class="showcase-subtitle">Primary Buttons</h3>
+                <div class="ui-flex ui-gap-md" style="flex-wrap: wrap;">
+                    <button class="ui-button ui-button-primary">Primary Button</button>
+                    <button class="ui-button ui-button-primary" disabled>Disabled</button>
+                    <button class="ui-button ui-button-outlined">Outlined Button</button>
+                    <button class="ui-button ui-button-naked">Naked Button</button>
+                </div>
+            </div>
+            <div class="ui-mb-lg">
+                <h3 class="showcase-subtitle">Destructive Buttons</h3>
+                <div class="ui-flex ui-gap-md" style="flex-wrap: wrap;">
+                    <button class="ui-button ui-button-destructive">Delete</button>
+                    <button class="ui-button ui-button-destructive-outline">Cancel</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms Section -->
+        <section id="forms" class="showcase-section">
+            <h2 class="showcase-title">Form Components</h2>
+            <div class="demo-input-container">
+                <div class="ui-input-group">
+                    <input type="text" class="ui-input" placeholder=" " id="demo-name">
+                    <label class="ui-input-label" for="demo-name">Your Name</label>
+                </div>
+                <div class="ui-input-group">
+                    <input type="email" class="ui-input" placeholder=" " id="demo-email">
+                    <label class="ui-input-label" for="demo-email">Email Address</label>
+                </div>
+                <div class="ui-input-group">
+                    <input type="text" class="ui-input ui-input-error" placeholder=" " id="demo-error">
+                    <label class="ui-input-label" for="demo-error">Contract Address</label>
+                    <div class="ui-input-error-message">Invalid contract address format</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges Section -->
+        <section id="badges" class="showcase-section">
+            <h2 class="showcase-title">Badge System</h2>
+            <div class="ui-flex ui-gap-md" style="flex-wrap: wrap;">
+                <span class="ui-badge ui-badge-success">Active</span>
+                <span class="ui-badge ui-badge-warning">Genesis</span>
+                <span class="ui-badge ui-badge-testnet">Testnet</span>
+                <span class="ui-badge ui-badge-error">Deprecated</span>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section id="cards" class="showcase-section">
+            <h2 class="showcase-title">Card Components</h2>
+            <div class="component-grid">
+                <div class="ui-card">
+                    <h3 class="ui-heading-3 ui-mb-md">Basic Card</h3>
+                    <p class="ui-text-secondary ui-mb-md">This is a basic glassmorphic card with backdrop blur effect.</p>
+                    <button class="ui-button ui-button-outlined">Learn More</button>
+                </div>
+                <div class="ui-glass-panel ui-p-lg">
+                    <h3 class="ui-heading-3 ui-mb-md">Glass Panel</h3>
+                    <p class="ui-text-secondary ui-mb-md">A lighter glass panel with subtle gradient overlay.</p>
+                    <div class="ui-flex ui-gap-sm">
+                        <span class="ui-badge ui-badge-success">Active</span>
+                        <span class="ui-badge ui-badge-testnet">Testnet</span>
+                    </div>
+                </div>
+                <div class="ui-glass-panel-dark ui-p-lg">
+                    <h3 class="ui-heading-3 ui-mb-md">Dark Glass Panel</h3>
+                    <p class="ui-text-secondary ui-mb-md">A darker glass panel with enhanced blur and glow effect.</p>
+                    <button class="ui-button ui-button-primary">Deploy Contract</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading States -->
+        <section id="loading" class="showcase-section">
+            <h2 class="showcase-title">Loading States</h2>
+            <div class="ui-flex ui-gap-xl" style="align-items: center;">
+                <div class="ui-spinner"></div>
+                <div class="ui-spinner ui-spinner-small"></div>
+                <button class="ui-button ui-button-primary" style="position: relative;">
+                    <span style="opacity: 0;">Loading...</span>
+                    <div class="ui-spinner ui-spinner-small" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);"></div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Modal Section -->
+        <section id="modals" class="showcase-section">
+            <h2 class="showcase-title">Modal Dialog</h2>
+            <button class="ui-button ui-button-primary" onclick="document.getElementById('exampleModal').classList.add('active')">
+                Open Modal
+            </button>
+        </section>
+
+        <!-- Utility Examples -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">Utility Classes</h2>
+            <div class="ui-glass-panel ui-p-xl ui-noise-overlay">
+                <h3 class="ui-gradient-text ui-heading-2 ui-mb-md">Gradient Text Effect</h3>
+                <p class="ui-text-secondary">This panel demonstrates the noise overlay effect combined with glassmorphism.</p>
+                <div class="ui-mt-lg ui-flex ui-gap-md">
+                    <div class="ui-p-md" style="background: var(--xion-glass-bg); border-radius: var(--xion-radius-md);">
+                        <code>.ui-p-md</code>
+                    </div>
+                    <div class="ui-p-lg" style="background: var(--xion-glass-bg); border-radius: var(--xion-radius-md);">
+                        <code>.ui-p-lg</code>
+                    </div>
+                    <div class="ui-p-xl" style="background: var(--xion-glass-bg); border-radius: var(--xion-radius-md);">
+                        <code>.ui-p-xl</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Example Modal -->
+    <div id="exampleModal" class="ui-modal-overlay example-modal" onclick="if(event.target === this) this.classList.remove('active')">
+        <div class="ui-modal-content">
+            <button class="ui-modal-close" onclick="document.getElementById('exampleModal').classList.remove('active')">✕</button>
+            <h2 class="ui-modal-header">Contract Deployment</h2>
+            <p class="ui-text-secondary ui-mb-lg">Deploy your smart contract to the Xion blockchain.</p>
+            
+            <div class="ui-input-group">
+                <input type="text" class="ui-input" placeholder=" " id="modal-contract">
+                <label class="ui-input-label" for="modal-contract">Contract Name</label>
+            </div>
+            
+            <div class="ui-input-group">
+                <input type="text" class="ui-input" placeholder=" " id="modal-address">
+                <label class="ui-input-label" for="modal-address">Wallet Address</label>
+            </div>
+            
+            <div class="ui-flex ui-gap-md ui-mt-xl">
+                <button class="ui-button ui-button-primary" style="flex: 1;">Deploy</button>
+                <button class="ui-button ui-button-outlined" onclick="document.getElementById('exampleModal').classList.remove('active')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer style="padding: var(--xion-spacing-3xl) 0; text-align: center; border-top: 1px solid var(--xion-border);">
+        <p class="ui-text-secondary">Xion Dashboard Design System v1.0</p>
+        <p class="ui-small-text ui-text-secondary ui-mt-sm">Built with pure CSS • GitHub Pages compatible • No build process required</p>
+    </footer>
+
+    <script>
+        // Simple navigation active state
+        document.querySelectorAll('.ui-nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    document.querySelectorAll('.ui-nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

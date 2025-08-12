@@ -1,0 +1,793 @@
+/* ================================
+   XION DASHBOARD DESIGN SYSTEM
+   Version: 1.0
+   ================================ */
+
+/* ================================
+   FONT DEFINITIONS
+   ================================ */
+@font-face {
+    font-family: "AkkuratLL";
+    src: url("fonts/AkkuratLLWeb-Thin.woff2") format("woff2");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AkkuratLL";
+    src: url("fonts/AkkuratLLWeb-Light.woff2") format("woff2");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AkkuratLL";
+    src: url("fonts/AkkuratLLWeb-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AkkuratLL";
+    src: url("fonts/AkkuratLLWeb-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "AkkuratLL";
+    src: url("fonts/AkkuratLLWeb-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* ================================
+   CSS VARIABLES - COLOR SYSTEM
+   ================================ */
+:root {
+    /* Base Colors */
+    --xion-background: #121212;
+    --xion-background-rgb: 18, 18, 18;
+    --xion-primary-text: #FFFFFF;
+    --xion-secondary-text: #8D8D8D;
+    --xion-border: hsla(0, 0%, 100%, 0.2);
+    --xion-border-focus: #8D8D8D;
+    
+    /* Semantic Colors */
+    --xion-destructive: #D74506;
+    --xion-warning: #E8B931;
+    --xion-success: #CAF033;
+    --xion-testnet: #FFAA4A;
+    --xion-inactive: #BDBDBD;
+    --xion-disabled-bg: #949494;
+    --xion-disabled-text: #575454;
+    
+    /* Glassmorphic Surfaces */
+    --xion-glass-bg: rgba(0, 0, 0, 0.25);
+    --xion-glass-panel: rgba(10, 10, 10, 0.5);
+    --xion-modal-overlay: rgba(24, 24, 24, 0.9);
+    
+    /* Gradient Accent */
+    --xion-gradient: conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg);
+    
+    /* Spacing */
+    --xion-spacing-xs: 0.25rem;
+    --xion-spacing-sm: 0.5rem;
+    --xion-spacing-md: 1rem;
+    --xion-spacing-lg: 1.5rem;
+    --xion-spacing-xl: 2rem;
+    --xion-spacing-2xl: 3rem;
+    --xion-spacing-3xl: 4rem;
+    
+    /* Border Radius */
+    --xion-radius-sm: 0.5rem;
+    --xion-radius-md: 0.75rem;
+    --xion-radius-lg: 1rem;
+    --xion-radius-xl: 1.5rem;
+    --xion-radius-2xl: 3rem;
+    
+    /* Typography */
+    --xion-font-family: "AkkuratLL", -apple-system, BlinkMacSystemFont, sans-serif;
+    --xion-font-size-xs: 0.75rem;
+    --xion-font-size-sm: 0.875rem;
+    --xion-font-size-base: 1rem;
+    --xion-font-size-lg: 1.125rem;
+    --xion-font-size-xl: 1.25rem;
+    --xion-font-size-2xl: 1.5rem;
+    --xion-font-size-3xl: 2rem;
+    
+    /* Transitions */
+    --xion-transition-fast: 100ms ease-linear;
+    --xion-transition-base: 200ms ease;
+    --xion-transition-slow: 300ms ease;
+    
+    /* Z-Index Layers */
+    --xion-z-base: 1;
+    --xion-z-dropdown: 10;
+    --xion-z-sticky: 20;
+    --xion-z-overlay: 30;
+    --xion-z-modal: 999;
+    --xion-z-tooltip: 1000;
+}
+
+/* ================================
+   BASE STYLES
+   ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--xion-font-family);
+    font-size: var(--xion-font-size-base);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--xion-primary-text);
+    background: var(--xion-background);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Remove spinner from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ================================
+   TYPOGRAPHY SYSTEM
+   ================================ */
+.ui-heading-1 {
+    font-size: var(--xion-font-size-3xl);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.ui-heading-2 {
+    font-size: var(--xion-font-size-2xl);
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.ui-heading-3 {
+    font-size: var(--xion-font-size-xl);
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.ui-nav-text {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+}
+
+.ui-body-text {
+    font-size: var(--xion-font-size-base);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.ui-small-text {
+    font-size: var(--xion-font-size-sm);
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.ui-text-secondary {
+    color: var(--xion-secondary-text);
+}
+
+/* ================================
+   GLASSMORPHIC PANELS
+   ================================ */
+.ui-glass-panel {
+    background: var(--xion-glass-bg);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border: 1px solid var(--xion-border);
+    border-radius: var(--xion-radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.ui-glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.03) 0%, 
+        transparent 100%);
+    pointer-events: none;
+}
+
+.ui-glass-panel-dark {
+    background: var(--xion-glass-panel);
+    backdrop-filter: blur(120px);
+    -webkit-backdrop-filter: blur(120px);
+    border: 1px solid var(--xion-border);
+    border-radius: var(--xion-radius-xl);
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.01);
+}
+
+/* ================================
+   BUTTON SYSTEM
+   ================================ */
+.ui-button {
+    font-family: var(--xion-font-family);
+    font-size: var(--xion-font-size-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.875rem 1.25rem;
+    border-radius: var(--xion-radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--xion-transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--xion-spacing-sm);
+    min-height: 44px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ui-button:disabled {
+    background: var(--xion-disabled-bg);
+    color: var(--xion-disabled-text);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.ui-button-primary {
+    background: var(--xion-primary-text);
+    color: var(--xion-background);
+}
+
+.ui-button-primary:hover:not(:disabled) {
+    background: #f5f5f5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.ui-button-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.ui-button-outlined {
+    background: transparent;
+    color: var(--xion-primary-text);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.ui-button-outlined:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--xion-primary-text);
+}
+
+.ui-button-naked {
+    background: transparent;
+    color: var(--xion-primary-text);
+    text-decoration: underline;
+    padding: var(--xion-spacing-sm) var(--xion-spacing-md);
+}
+
+.ui-button-naked:hover:not(:disabled) {
+    opacity: 0.7;
+}
+
+.ui-button-destructive {
+    background: var(--xion-destructive);
+    color: var(--xion-primary-text);
+}
+
+.ui-button-destructive:hover:not(:disabled) {
+    background: #c23d05;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(215, 69, 6, 0.3);
+}
+
+.ui-button-destructive-outline {
+    background: transparent;
+    color: var(--xion-destructive);
+    border: 1px solid var(--xion-destructive);
+}
+
+.ui-button-destructive-outline:hover:not(:disabled) {
+    background: rgba(215, 69, 6, 0.1);
+}
+
+/* ================================
+   INPUT SYSTEM
+   ================================ */
+.ui-input-group {
+    position: relative;
+    margin-bottom: var(--xion-spacing-lg);
+}
+
+.ui-input {
+    width: 100%;
+    padding: var(--xion-spacing-md) 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--xion-border);
+    color: var(--xion-primary-text);
+    font-family: var(--xion-font-family);
+    font-size: var(--xion-font-size-base);
+    transition: all var(--xion-transition-base);
+}
+
+.ui-input:focus {
+    outline: none;
+    border-bottom-color: var(--xion-border-focus);
+}
+
+.ui-input::placeholder {
+    color: transparent;
+}
+
+.ui-input-label {
+    position: absolute;
+    left: 0;
+    top: var(--xion-spacing-md);
+    color: var(--xion-secondary-text);
+    font-size: var(--xion-font-size-base);
+    transition: all var(--xion-transition-base);
+    pointer-events: none;
+}
+
+.ui-input:focus + .ui-input-label,
+.ui-input:not(:placeholder-shown) + .ui-input-label {
+    top: -0.5rem;
+    font-size: var(--xion-font-size-xs);
+    color: var(--xion-border-focus);
+}
+
+.ui-input-error {
+    border-bottom-color: var(--xion-destructive);
+}
+
+.ui-input-error-message {
+    color: var(--xion-destructive);
+    font-size: var(--xion-font-size-sm);
+    margin-top: var(--xion-spacing-xs);
+}
+
+/* ================================
+   MODAL SYSTEM
+   ================================ */
+.ui-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--xion-modal-overlay);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: var(--xion-z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--xion-spacing-xl);
+    animation: ui-fade-in var(--xion-transition-slow);
+}
+
+.ui-modal-content {
+    background: var(--xion-glass-panel);
+    backdrop-filter: blur(120px);
+    -webkit-backdrop-filter: blur(120px);
+    border-radius: var(--xion-radius-2xl);
+    padding: var(--xion-spacing-2xl);
+    max-width: 560px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.01);
+    animation: ui-zoom-in var(--xion-transition-slow);
+}
+
+@media (max-width: 768px) {
+    .ui-modal-content {
+        border-radius: var(--xion-radius-xl);
+        padding: var(--xion-spacing-xl);
+    }
+}
+
+.ui-modal-header {
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 700;
+    margin-bottom: var(--xion-spacing-lg);
+}
+
+.ui-modal-close {
+    position: absolute;
+    top: var(--xion-spacing-lg);
+    right: var(--xion-spacing-lg);
+    background: transparent;
+    border: none;
+    color: var(--xion-secondary-text);
+    cursor: pointer;
+    padding: var(--xion-spacing-sm);
+    transition: all var(--xion-transition-base);
+}
+
+.ui-modal-close:hover {
+    color: var(--xion-primary-text);
+}
+
+/* ================================
+   CARD SYSTEM
+   ================================ */
+.ui-card {
+    background: var(--xion-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--xion-border);
+    border-radius: var(--xion-radius-lg);
+    padding: var(--xion-spacing-lg);
+    transition: all var(--xion-transition-base);
+}
+
+.ui-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ================================
+   LOGO & BRANDING
+   ================================ */
+.ui-logo {
+    width: 90px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.ui-logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #181818;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ui-logo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--xion-spacing-md);
+}
+
+.ui-network-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--xion-radius-2xl);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.ui-network-mainnet {
+    background: rgba(202, 240, 51, 0.15);
+    color: var(--xion-success);
+    border: 1px solid rgba(202, 240, 51, 0.3);
+}
+
+.ui-network-testnet {
+    background: rgba(255, 170, 74, 0.15);
+    color: var(--xion-testnet);
+    border: 1px solid rgba(255, 170, 74, 0.3);
+}
+
+/* ================================
+   BADGE SYSTEM
+   ================================ */
+.ui-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--xion-spacing-xs) var(--xion-spacing-md);
+    border-radius: var(--xion-radius-2xl);
+    font-size: var(--xion-font-size-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ui-badge-success {
+    background: rgba(202, 240, 51, 0.15);
+    color: var(--xion-success);
+    border: 1px solid rgba(202, 240, 51, 0.3);
+}
+
+.ui-badge-warning {
+    background: rgba(232, 185, 49, 0.15);
+    color: var(--xion-warning);
+    border: 1px solid rgba(232, 185, 49, 0.3);
+}
+
+.ui-badge-testnet {
+    background: rgba(255, 170, 74, 0.15);
+    color: var(--xion-testnet);
+    border: 1px solid rgba(255, 170, 74, 0.3);
+}
+
+.ui-badge-error {
+    background: rgba(215, 69, 6, 0.15);
+    color: var(--xion-destructive);
+    border: 1px solid rgba(215, 69, 6, 0.3);
+}
+
+/* ================================
+   NAVIGATION SYSTEM
+   ================================ */
+.ui-nav {
+    background: transparent;
+    border-bottom: 1px solid var(--xion-border);
+    padding: var(--xion-spacing-lg) 0;
+    position: sticky;
+    top: 0;
+    z-index: var(--xion-z-sticky);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.ui-nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--xion-spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ui-nav-brand {
+    font-size: var(--xion-font-size-xl);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--xion-primary-text);
+}
+
+.ui-nav-menu {
+    display: flex;
+    gap: var(--xion-spacing-2xl);
+    align-items: center;
+}
+
+.ui-nav-link {
+    color: var(--xion-secondary-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    transition: color var(--xion-transition-base);
+    position: relative;
+}
+
+.ui-nav-link:hover {
+    color: var(--xion-primary-text);
+}
+
+.ui-nav-link.active {
+    color: var(--xion-primary-text);
+}
+
+.ui-nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--xion-gradient);
+}
+
+/* ================================
+   LOADING & SPINNER
+   ================================ */
+.ui-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--xion-border);
+    border-top-color: var(--xion-primary-text);
+    border-radius: 50%;
+    animation: ui-spin 0.8s linear infinite;
+}
+
+.ui-spinner-small {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+}
+
+@keyframes ui-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ================================
+   ANIMATIONS
+   ================================ */
+@keyframes ui-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ui-zoom-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes ui-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   UTILITY CLASSES
+   ================================ */
+.ui-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--xion-spacing-xl);
+}
+
+.ui-flex {
+    display: flex;
+}
+
+.ui-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ui-gap-xs { gap: var(--xion-spacing-xs); }
+.ui-gap-sm { gap: var(--xion-spacing-sm); }
+.ui-gap-md { gap: var(--xion-spacing-md); }
+.ui-gap-lg { gap: var(--xion-spacing-lg); }
+.ui-gap-xl { gap: var(--xion-spacing-xl); }
+.ui-gap-2xl { gap: var(--xion-spacing-2xl); }
+
+.ui-mt-xs { margin-top: var(--xion-spacing-xs); }
+.ui-mt-sm { margin-top: var(--xion-spacing-sm); }
+.ui-mt-md { margin-top: var(--xion-spacing-md); }
+.ui-mt-lg { margin-top: var(--xion-spacing-lg); }
+.ui-mt-xl { margin-top: var(--xion-spacing-xl); }
+
+.ui-mb-xs { margin-bottom: var(--xion-spacing-xs); }
+.ui-mb-sm { margin-bottom: var(--xion-spacing-sm); }
+.ui-mb-md { margin-bottom: var(--xion-spacing-md); }
+.ui-mb-lg { margin-bottom: var(--xion-spacing-lg); }
+.ui-mb-xl { margin-bottom: var(--xion-spacing-xl); }
+
+.ui-p-xs { padding: var(--xion-spacing-xs); }
+.ui-p-sm { padding: var(--xion-spacing-sm); }
+.ui-p-md { padding: var(--xion-spacing-md); }
+.ui-p-lg { padding: var(--xion-spacing-lg); }
+.ui-p-xl { padding: var(--xion-spacing-xl); }
+.ui-p-2xl { padding: var(--xion-spacing-2xl); }
+
+.ui-text-center { text-align: center; }
+.ui-text-left { text-align: left; }
+.ui-text-right { text-align: right; }
+
+.ui-gradient-text {
+    background: var(--xion-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ui-noise-overlay {
+    position: relative;
+}
+
+.ui-noise-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* ================================
+   RESPONSIVE UTILITIES
+   ================================ */
+@media (max-width: 768px) {
+    .ui-hide-mobile {
+        display: none;
+    }
+    
+    .ui-nav-menu {
+        gap: var(--xion-spacing-lg);
+    }
+    
+    .ui-container {
+        padding: 0 var(--xion-spacing-md);
+    }
+}
+
+@media (min-width: 769px) {
+    .ui-hide-desktop {
+        display: none;
+    }
+}
+
+/* ================================
+   SCROLLBAR STYLING
+   ================================ */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--xion-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--xion-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--xion-border-focus);
+}
+
+/* ================================
+   FOCUS STYLES (Accessibility)
+   ================================ */
+*:focus-visible {
+    outline: 2px solid var(--xion-border-focus);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--xion-primary-text);
+    outline-offset: 2px;
+}

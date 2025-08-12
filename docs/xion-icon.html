@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xion Icon Component</title>
+    <link rel="stylesheet" href="xion-design-system.css">
+</head>
+<body style="background: var(--xion-background); padding: 2rem;">
+    <div class="ui-container">
+        <h1 class="ui-heading-1 ui-mb-xl">Xion Icon Logo Component</h1>
+        
+        <!-- Inline SVG Icon Component -->
+        <div class="ui-glass-panel ui-p-xl ui-mb-xl">
+            <h2 class="ui-heading-2 ui-mb-lg">Inline SVG Implementation</h2>
+            <p class="ui-text-secondary ui-mb-lg">Use this SVG component for optimal performance and scalability</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem;">
+                <!-- Standard Icon -->
+                <div>
+                    <div class="ui-logo-icon ui-mb-sm">
+                        <svg width="24" height="24" viewBox="0 0 105 203" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M31.256 112.386C15.14 93.748 8.18 77.046 8.18 60.587C8.18 50.905 9.279 44.732 10.622 39.165C2.686 55.746 0 68.211 0 79.951C0 142.038 57.384 150.026 57.384 193.958C57.384 204.609 51.767 219.011 32.599 246C90.349 169.632 105 142.159 105 123.037C105 69.664 47.86 60.708 47.86 0.678C47.86 -12.998 55.797 -29.457 70.57 -51C70.57 -51 56.529 -31.394 48.959 -20.985C21.977 16.291 11.477 64.702 31.378 112.386H31.256Z"/>
+                        </svg>
+                    </div>
+                    <p class="ui-small-text ui-text-center">Standard (40px)</p>
+                </div>
+                
+                <!-- Large Icon -->
+                <div>
+                    <div class="ui-logo-icon" style="width: 60px; height: 60px; border-radius: 30px;">
+                        <svg width="36" height="36" viewBox="0 0 105 203" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M31.256 112.386C15.14 93.748 8.18 77.046 8.18 60.587C8.18 50.905 9.279 44.732 10.622 39.165C2.686 55.746 0 68.211 0 79.951C0 142.038 57.384 150.026 57.384 193.958C57.384 204.609 51.767 219.011 32.599 246C90.349 169.632 105 142.159 105 123.037C105 69.664 47.86 60.708 47.86 0.678C47.86 -12.998 55.797 -29.457 70.57 -51C70.57 -51 56.529 -31.394 48.959 -20.985C21.977 16.291 11.477 64.702 31.378 112.386H31.256Z"/>
+                        </svg>
+                    </div>
+                    <p class="ui-small-text ui-text-center">Large (60px)</p>
+                </div>
+                
+                <!-- Small Icon -->
+                <div>
+                    <div class="ui-logo-icon" style="width: 32px; height: 32px; border-radius: 16px;">
+                        <svg width="18" height="18" viewBox="0 0 105 203" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M31.256 112.386C15.14 93.748 8.18 77.046 8.18 60.587C8.18 50.905 9.279 44.732 10.622 39.165C2.686 55.746 0 68.211 0 79.951C0 142.038 57.384 150.026 57.384 193.958C57.384 204.609 51.767 219.011 32.599 246C90.349 169.632 105 142.159 105 123.037C105 69.664 47.86 60.708 47.86 0.678C47.86 -12.998 55.797 -29.457 70.57 -51C70.57 -51 56.529 -31.394 48.959 -20.985C21.977 16.291 11.477 64.702 31.378 112.386H31.256Z"/>
+                        </svg>
+                    </div>
+                    <p class="ui-small-text ui-text-center">Small (32px)</p>
+                </div>
+                
+                <!-- Loading State -->
+                <div>
+                    <div class="ui-logo-icon" style="animation: ui-spin 2s linear infinite;">
+                        <svg width="24" height="24" viewBox="0 0 105 203" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M31.256 112.386C15.14 93.748 8.18 77.046 8.18 60.587C8.18 50.905 9.279 44.732 10.622 39.165C2.686 55.746 0 68.211 0 79.951C0 142.038 57.384 150.026 57.384 193.958C57.384 204.609 51.767 219.011 32.599 246C90.349 169.632 105 142.159 105 123.037C105 69.664 47.86 60.708 47.86 0.678C47.86 -12.998 55.797 -29.457 70.57 -51C70.57 -51 56.529 -31.394 48.959 -20.985C21.977 16.291 11.477 64.702 31.378 112.386H31.256Z"/>
+                        </svg>
+                    </div>
+                    <p class="ui-small-text ui-text-center">Loading State</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Usage Examples -->
+        <div class="ui-glass-panel ui-p-xl">
+            <h2 class="ui-heading-2 ui-mb-lg">Usage Examples</h2>
+            
+            <div class="ui-mb-xl">
+                <h3 class="ui-heading-3 ui-mb-md">Navigation Bar with Logo</h3>
+                <div style="background: rgba(0, 0, 0, 0.5); padding: 1rem; border-radius: var(--xion-radius-md);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="ui-logo-container">
+                            <img src="xion-logo.png" alt="Xion" class="ui-logo">
+                            <span class="ui-network-badge ui-network-mainnet">MAINNET</span>
+                        </div>
+                        <div class="ui-flex ui-gap-lg">
+                            <a href="#" class="ui-nav-link">Dashboard</a>
+                            <a href="#" class="ui-nav-link">Contracts</a>
+                            <a href="#" class="ui-nav-link">Explorer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ui-mb-xl">
+                <h3 class="ui-heading-3 ui-mb-md">Avatar/Profile Usage</h3>
+                <div class="ui-flex ui-gap-lg" style="align-items: center;">
+                    <div class="ui-flex ui-gap-sm" style="align-items: center; padding: 0.5rem 1rem; background: rgba(0, 0, 0, 0.3); border-radius: var(--xion-radius-lg);">
+                        <div class="ui-logo-icon">
+                            <svg width="24" height="24" viewBox="0 0 105 203" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M31.256 112.386C15.14 93.748 8.18 77.046 8.18 60.587C8.18 50.905 9.279 44.732 10.622 39.165C2.686 55.746 0 68.211 0 79.951C0 142.038 57.384 150.026 57.384 193.958C57.384 204.609 51.767 219.011 32.599 246C90.349 169.632 105 142.159 105 123.037C105 69.664 47.86 60.708 47.86 0.678C47.86 -12.998 55.797 -29.457 70.57 -51C70.57 -51 56.529 -31.394 48.959 -20.985C21.977 16.291 11.477 64.702 31.378 112.386H31.256Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="ui-small-text">Xion User</div>
+                            <div class="ui-small-text ui-text-secondary">xion1abc...xyz</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="ui-heading-3 ui-mb-md">Code Example</h3>
+                <pre style="background: rgba(0, 0, 0, 0.5); padding: 1rem; border-radius: var(--xion-radius-md); overflow-x: auto;">
+<code>&lt;div class="ui-logo-icon"&gt;
+    &lt;svg width="24" height="24" viewBox="0 0 105 203" fill="white" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;path d="M31.256 112.386C15.14 93.748 8.18 77.046 8.18 60.587C8.18 50.905 9.279 44.732 10.622 39.165C2.686 55.746 0 68.211 0 79.951C0 142.038 57.384 150.026 57.384 193.958C57.384 204.609 51.767 219.011 32.599 246C90.349 169.632 105 142.159 105 123.037C105 69.664 47.86 60.708 47.86 0.678C47.86 -12.998 55.797 -29.457 70.57 -51C70.57 -51 56.529 -31.394 48.959 -20.985C21.977 16.291 11.477 64.702 31.378 112.386H31.256Z"/&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
