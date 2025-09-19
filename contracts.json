@@ -1318,5 +1318,21 @@
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-09T20:42:52.745Z"
     }
+  },
+  {
+    "name": "Treasury (v2)",
+    "description": "Upgraded Treasury contract implementation",
+    "code_id": "63",
+    "hash": "54992CD737BF824341F7EEFB1C5A81E4CEDD7565A7F196D688BAF7D3BAC49F21",
+    "governance": "46",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts",
+      "version": "v0.2.0"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false
   }
 ]
