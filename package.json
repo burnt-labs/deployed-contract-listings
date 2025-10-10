@@ -4,8 +4,10 @@
   "description": "Registry of deployed contracts on Xion blockchain",
   "main": "index.js",
   "scripts": {
-    "validate": "node scripts/validate.js",
-    "verify": "node scripts/verify-contracts.js",
+    "validate": "node scripts/unified-validator.js --validate-only",
+    "verify": "node scripts/unified-validator.js --verify-only",
+    "validate-all": "node scripts/unified-validator.js",
+    "test-validation": "node scripts/unified-validator.js --test",
     "migrate-testnet": "tsx scripts/migrate-to-testnet.ts",
     "build-site": "node scripts/build-site.js",
     "serve": "npx http-server docs -p 8080"
@@ -29,5 +31,6 @@
     "@types/node": "^24.7.1",
     "http-server": "^14.1.1",
     "tsx": "^4.7.1"
-  }
+  },
+  "packageManager": "pnpm@9.15.4"
 }
