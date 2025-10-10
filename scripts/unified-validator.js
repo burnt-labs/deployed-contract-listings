@@ -108,14 +108,12 @@ const schema = {
 
 class UnifiedValidator {
     constructor(options = {}) {
-        this.network = options.network || 'mainnet';
         this.verbose = options.verbose || false;
         this.validateOnly = options.validateOnly || false;
         this.verifyOnly = options.verifyOnly || false;
         
-        this.apiBaseUrl = this.network === 'testnet' 
-            ? 'https://api.xion-testnet-2.burnt.com'
-            : 'https://api.xion-mainnet-1.burnt.com';
+        this.apiBaseUrl = 'https://api.xion-mainnet-1.burnt.com';
+        this.apiTestnetBaseUrl = 'https://api.xion-testnet-2.burnt.com';
         
         this.results = {
             jsonValidation: { valid: false, errors: [] },
@@ -227,6 +225,9 @@ class UnifiedValidator {
             const data = JSON.parse(fs.readFileSync(contractsPath, 'utf8'));
             this.validateJson(data, schema);
             
+            // Check for missing testnet configurations
+            this.checkTestnetConfigurations(data);
+            
             this.results.jsonValidation.valid = true;
             this.log(`✅ contracts.json structure validation passed (${data.length} contracts)`, 'success');
             return true;
@@ -235,6 +236,27 @@ class UnifiedValidator {
             this.results.jsonValidation.errors.push(error.message);
             this.log(`❌ JSON validation failed: ${error.message}`, 'error');
             return false;
+        }
+    }
+
+    checkTestnetConfigurations(contracts) {
+        const contractsWithoutTestnet = [];
+        
+        contracts.forEach(contract => {
+            if (!contract.testnet) {
+                contractsWithoutTestnet.push({
+                    codeId: contract.code_id,
+                    name: contract.name
+                });
+            }
+        });
+        
+        if (contractsWithoutTestnet.length > 0) {
+            this.log(`⚠️  Warning: ${contractsWithoutTestnet.length} contracts missing testnet configuration:`, 'warning');
+            contractsWithoutTestnet.forEach(contract => {
+                this.log(`   - Code ID ${contract.codeId}: ${contract.name}`, 'warning');
+            });
+            this.log('   Consider adding testnet configurations for better cross-network support.', 'warning');
         }
     }
 
@@ -275,22 +297,54 @@ class UnifiedValidator {
         return statusMap[status] || status;
     }
 
-    async fetchOnChainContracts() {
-        this.log(`Fetching contracts from ${this.network}...`);
+    async fetchContracts(network = 'mainnet') {
+        const isTestnet = network === 'testnet';
+        const apiUrl = isTestnet ? this.apiTestnetBaseUrl : this.apiBaseUrl;
+        const networkName = isTestnet ? 'testnet' : 'mainnet';
+        
+        this.log(`Fetching contracts from ${networkName}...`);
         
         try {
-            const response = await fetch(`${this.apiBaseUrl}/cosmwasm/wasm/v1/code`);
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
+            const allContracts = [];
+            let paginationKey = null;
+            let pageCount = 0;
             
-            const data = await response.json();
-            this.log(`Found ${data.code_infos?.length || 0} contracts on-chain`, 'success');
-            return data.code_infos || [];
+            do {
+                pageCount++;
+                const url = paginationKey 
+                    ? `${apiUrl}/cosmwasm/wasm/v1/code?pagination.key=${encodeURIComponent(paginationKey)}`
+                    : `${apiUrl}/cosmwasm/wasm/v1/code`;
+                
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                const contracts = data.code_infos || [];
+                allContracts.push(...contracts);
+                
+                this.log(`Fetched ${networkName} page ${pageCount}: ${contracts.length} contracts`, 'debug');
+                
+                // Check if there's a next page
+                paginationKey = data.pagination?.next_key;
+                
+            } while (paginationKey);
+            
+            this.log(`Found ${allContracts.length} contracts on ${networkName} (${pageCount} pages)`, 'success');
+            return allContracts;
         } catch (error) {
-            this.log(`Failed to fetch on-chain contracts: ${error.message}`, 'error');
+            this.log(`Failed to fetch ${networkName} contracts: ${error.message}`, 'error');
             throw error;
         }
+    }
+
+    async fetchOnChainContracts() {
+        return await this.fetchContracts('mainnet');
+    }
+
+    async fetchTestnetContracts() {
+        return await this.fetchContracts('testnet');
     }
 
     async fetchGovernanceProposals() {
@@ -336,11 +390,26 @@ class UnifiedValidator {
                 this.fetchGovernanceProposals()
             ]);
 
+            // Check if any contracts have testnet configuration
+            const contractsWithTestnet = localContracts.filter(contract => contract.testnet);
+            let testnetContracts = [];
+            
+            if (contractsWithTestnet.length > 0) {
+                this.log(`Found ${contractsWithTestnet.length} contracts with testnet configuration, verifying testnet data...`);
+                try {
+                    testnetContracts = await this.fetchTestnetContracts();
+                } catch (error) {
+                    this.log(`Warning: Failed to fetch testnet contracts: ${error.message}`, 'warning');
+                }
+            }
+
             // Create maps for efficient lookup
             const localCodeIdMap = new Map();
             const localHashMap = new Map();
             const onChainCodeIdMap = new Map();
             const onChainHashMap = new Map();
+            const testnetCodeIdMap = new Map();
+            const testnetHashMap = new Map();
             
             // Process local contracts
             localContracts.forEach(contract => {
@@ -348,10 +417,16 @@ class UnifiedValidator {
                 localHashMap.set(contract.hash, contract);
             });
             
-            // Process on-chain contracts
+            // Process on-chain contracts (mainnet)
             onChainContracts.forEach(contract => {
                 onChainCodeIdMap.set(contract.code_id, contract);
                 onChainHashMap.set(contract.data_hash.toUpperCase(), contract);
+            });
+
+            // Process testnet contracts
+            testnetContracts.forEach(contract => {
+                testnetCodeIdMap.set(contract.code_id, contract);
+                testnetHashMap.set(contract.data_hash.toUpperCase(), contract);
             });
 
             // Analyze discrepancies
@@ -360,7 +435,8 @@ class UnifiedValidator {
                 missingFromChain: [],
                 hashMismatches: [],
                 governanceIssues: [],
-                deprecatedIssues: []
+                deprecatedIssues: [],
+                testnetIssues: []
             };
 
             // Find contracts on-chain but not in JSON
@@ -409,18 +485,24 @@ class UnifiedValidator {
             // Analyze deprecated contracts
             this.analyzeDeprecatedContracts(localContracts, onChainContracts, discrepancies);
 
+            // Analyze testnet issues
+            this.analyzeTestnetIssues(localContracts, testnetContracts, discrepancies);
+
             this.results.onChainVerification.success = true;
             this.results.onChainVerification.discrepancies = discrepancies;
             this.results.summary = {
                 totalLocalContracts: localContracts.length,
                 totalOnChainContracts: onChainContracts.length,
+                totalTestnetContracts: testnetContracts.length,
                 totalProposals: proposals.length,
+                contractsWithTestnet: contractsWithTestnet.length,
                 discrepancies: {
                     missingFromJson: discrepancies.missingFromJson.length,
                     missingFromChain: discrepancies.missingFromChain.length,
                     hashMismatches: discrepancies.hashMismatches.length,
                     governanceIssues: discrepancies.governanceIssues.length,
-                    deprecatedIssues: discrepancies.deprecatedIssues.length
+                    deprecatedIssues: discrepancies.deprecatedIssues.length,
+                    testnetIssues: discrepancies.testnetIssues.length
                 }
             };
 
@@ -487,6 +569,34 @@ class UnifiedValidator {
         });
     }
 
+    analyzeTestnetIssues(localContracts, testnetContracts, discrepancies) {
+        const contractsWithTestnet = localContracts.filter(c => c.testnet);
+        
+        contractsWithTestnet.forEach(contract => {
+            const testnetConfig = contract.testnet;
+            const testnetContract = testnetContracts.find(c => `${c.code_id}` === `${testnetConfig.code_id}`);
+            
+            if (!testnetContract) {
+                discrepancies.testnetIssues.push({
+                    codeId: contract.code_id,
+                    testnetCodeId: testnetConfig.code_id,
+                    name: contract.name,
+                    issue: 'Testnet contract not found on testnet',
+                    expectedHash: testnetConfig.hash
+                });
+            } else if (testnetContract.data_hash.toUpperCase() !== testnetConfig.hash) {
+                discrepancies.testnetIssues.push({
+                    codeId: contract.code_id,
+                    testnetCodeId: testnetConfig.code_id,
+                    name: contract.name,
+                    issue: 'Testnet hash mismatch',
+                    expectedHash: testnetConfig.hash,
+                    actualHash: testnetContract.data_hash.toUpperCase()
+                });
+            }
+        });
+    }
+
     generateRecommendations(discrepancies) {
         this.log('Generating recommendations...');
         
@@ -530,13 +640,22 @@ class UnifiedValidator {
                 action: 'Update governance field to reflect actual proposal ID'
             });
         }
+        
+        if (discrepancies.testnetIssues && discrepancies.testnetIssues.length > 0) {
+            this.results.recommendations.push({
+                type: 'testnet_issue',
+                priority: 'medium',
+                message: `Fix ${discrepancies.testnetIssues.length} testnet configuration issues`,
+                action: 'Update testnet configurations or verify testnet deployments'
+            });
+        }
     }
 
 
     // Main validation method
     async validate() {
         try {
-            colorLog('cyan', `🔍 Starting unified contract validation for ${this.network}...`);
+            colorLog('cyan', '🔍 Starting unified contract validation for mainnet...');
             
             let success = true;
 
@@ -582,6 +701,8 @@ class UnifiedValidator {
             colorLog('blue', '\n📈 On-chain Verification Summary:');
             colorLog('gray', `   Local contracts: ${summary.totalLocalContracts}`);
             colorLog('gray', `   On-chain contracts: ${summary.totalOnChainContracts}`);
+            colorLog('gray', `   Testnet contracts: ${summary.totalTestnetContracts}`);
+            colorLog('gray', `   Contracts with testnet config: ${summary.contractsWithTestnet}`);
             colorLog('gray', `   Governance proposals: ${summary.totalProposals}`);
             
             const totalDiscrepancies = Object.values(summary.discrepancies).reduce((sum, count) => sum + count, 0);
@@ -636,6 +757,19 @@ class UnifiedValidator {
                 colorLog('yellow', `   Code ID ${item.codeId} (${item.name}): ${item.issue}`);
             });
         }
+        
+        if (discrepancies.testnetIssues.length > 0) {
+            colorLog('yellow', '\n🧪 Testnet configuration issues:');
+            discrepancies.testnetIssues.forEach(item => {
+                if (item.issue === 'Testnet hash mismatch') {
+                    colorLog('yellow', `   Code ID ${item.codeId} (${item.name}):`);
+                    colorLog('yellow', `     Expected: ${item.expectedHash}`);
+                    colorLog('yellow', `     Actual:   ${item.actualHash}`);
+                } else {
+                    colorLog('yellow', `   Code ID ${item.codeId} (${item.name}): ${item.issue}`);
+                }
+            });
+        }
     }
 
     printRecommendations() {
@@ -652,7 +786,6 @@ class UnifiedValidator {
 async function main() {
     const args = process.argv.slice(2);
     const options = {
-        network: 'mainnet',
         verbose: false,
         validateOnly: false,
         verifyOnly: false,
@@ -660,9 +793,7 @@ async function main() {
     
     // Parse command line arguments
     args.forEach(arg => {
-        if (arg.startsWith('--network=')) {
-            options.network = arg.split('=')[1];
-        } else if (arg === '--verbose' || arg === '-v') {
+        if (arg === '--verbose' || arg === '-v') {
             options.verbose = true;
         } else if (arg === '--validate-only') {
             options.validateOnly = true;
@@ -677,7 +808,6 @@ Usage: node scripts/unified-validator.js [options]
 Options:
   --validate-only         Only validate JSON structure
   --verify-only          Only verify against on-chain data
-  --network=mainnet|testnet    Network to validate against (default: mainnet)
   --verbose, -v          Enable verbose output
   --help, -h             Show this help message
 
@@ -685,16 +815,11 @@ Examples:
   node scripts/unified-validator.js
   node scripts/unified-validator.js --validate-only
   node scripts/unified-validator.js --verify-only
-  node scripts/unified-validator.js --network=testnet --verbose
+  node scripts/unified-validator.js --verbose
             `);
             process.exit(0);
         }
     });
-    
-    if (!['mainnet', 'testnet'].includes(options.network)) {
-        colorLog('red', '❌ Invalid network. Use --network=mainnet or --network=testnet');
-        process.exit(1);
-    }
     
     const validator = new UnifiedValidator(options);
     const success = await validator.validate();

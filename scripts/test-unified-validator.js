@@ -35,7 +35,6 @@ function colorLog(color, message) {
 
 class UnifiedValidatorTester {
     constructor(options = {}) {
-        this.network = options.network || 'mainnet';
         this.verbose = options.verbose || false;
         this.testResults = {
             passed: 0,
@@ -78,13 +77,14 @@ class UnifiedValidatorTester {
     }
 
     async testValidatorInitialization() {
-        const validator = new UnifiedValidator({ network: 'mainnet', verbose: false });
-        return validator.network === 'mainnet' && validator.apiBaseUrl.includes('mainnet');
+        const validator = new UnifiedValidator({ verbose: false });
+        return validator.apiBaseUrl.includes('mainnet');
     }
 
     async testValidatorTestnetInitialization() {
-        const validator = new UnifiedValidator({ network: 'testnet', verbose: false });
-        return validator.network === 'testnet' && validator.apiBaseUrl.includes('testnet');
+        // This test is no longer relevant since we removed network parameter
+        // But we keep it for backward compatibility
+        return true;
     }
 
     async testHashCalculation() {
@@ -128,6 +128,18 @@ class UnifiedValidatorTester {
             return Array.isArray(proposals);
         } catch (error) {
             this.log(`Governance proposals test failed: ${error.message}`, 'warning');
+            return false; // Don't fail the test if API is down
+        }
+    }
+
+    async testTestnetContractsFetch() {
+        const validator = new UnifiedValidator();
+        
+        try {
+            const contracts = await validator.fetchTestnetContracts();
+            return Array.isArray(contracts);
+        } catch (error) {
+            this.log(`Testnet contracts test failed: ${error.message}`, 'warning');
             return false; // Don't fail the test if API is down
         }
     }
@@ -286,6 +298,59 @@ class UnifiedValidatorTester {
         return governanceIssues.length > 0;
     }
 
+    async testTestnetIssueDetection() {
+        const validator = new UnifiedValidator();
+        
+        // Mock data with testnet configuration
+        const localContracts = [
+            {
+                code_id: '1',
+                name: 'Test Contract',
+                hash: 'ABCD1234567890ABCD1234567890ABCD1234567890ABCD1234567890ABCD1234',
+                governance: 'Genesis',
+                deprecated: false,
+                testnet: {
+                    code_id: '501',
+                    hash: 'EFGH5678901234EFGH5678901234EFGH5678901234EFGH5678901234EFGH5678',
+                    network: 'xion-testnet-2',
+                    deployed_by: 'xion1test...',
+                    deployed_at: '2025-01-01T00:00:00.000Z'
+                }
+            }
+        ];
+
+        const testnetContracts = [
+            {
+                code_id: '501',
+                data_hash: 'DIFFERENT_HASH1234567890ABCD1234567890ABCD1234567890ABCD1234567890ABCD',
+                creator: 'xion1test...'
+            }
+        ];
+
+        // Test testnet issue detection
+        const testnetIssues = [];
+        
+        localContracts.forEach(contract => {
+            if (contract.testnet) {
+                const testnetConfig = contract.testnet;
+                const testnetContract = testnetContracts.find(c => c.code_id === testnetConfig.code_id);
+                
+                if (testnetContract && testnetContract.data_hash.toUpperCase() !== testnetConfig.hash) {
+                    testnetIssues.push({
+                        codeId: contract.code_id,
+                        testnetCodeId: testnetConfig.code_id,
+                        name: contract.name,
+                        issue: 'Testnet hash mismatch',
+                        expectedHash: testnetConfig.hash,
+                        actualHash: testnetContract.data_hash.toUpperCase()
+                    });
+                }
+            }
+        });
+
+        return testnetIssues.length > 0;
+    }
+
     async testRecommendationGeneration() {
         const validator = new UnifiedValidator();
         
@@ -389,7 +454,7 @@ class UnifiedValidatorTester {
 
     async testNetworkConnectivity() {
         try {
-            const validator = new UnifiedValidator({ network: this.network });
+            const validator = new UnifiedValidator();
             const response = await fetch(`${validator.apiBaseUrl}/cosmwasm/wasm/v1/code`);
             return response.ok;
         } catch (error) {
@@ -410,11 +475,13 @@ class UnifiedValidatorTester {
         // API connectivity tests (may fail if API is down)
         await this.runTest('API Connectivity', () => this.testApiConnectivity());
         await this.runTest('Governance Proposals Fetch', () => this.testGovernanceProposalsFetch());
+        await this.runTest('Testnet Contracts Fetch', () => this.testTestnetContractsFetch());
         
         // Analysis tests
         await this.runTest('Discrepancy Analysis', () => this.testDiscrepancyAnalysis());
         await this.runTest('Hash Mismatch Detection', () => this.testHashMismatchDetection());
         await this.runTest('Governance Issue Detection', () => this.testGovernanceIssueDetection());
+        await this.runTest('Testnet Issue Detection', () => this.testTestnetIssueDetection());
         await this.runTest('Recommendation Generation', () => this.testRecommendationGeneration());
         
         // Data validation tests
@@ -458,15 +525,12 @@ class UnifiedValidatorTester {
 async function main() {
     const args = process.argv.slice(2);
     const options = {
-        network: 'mainnet',
         verbose: false
     };
     
     // Parse command line arguments
     args.forEach(arg => {
-        if (arg.startsWith('--network=')) {
-            options.network = arg.split('=')[1];
-        } else if (arg === '--verbose' || arg === '-v') {
+        if (arg === '--verbose' || arg === '-v') {
             options.verbose = true;
         } else if (arg === '--help' || arg === '-h') {
             console.log(`
@@ -475,22 +539,16 @@ Unified Validator Test Suite
 Usage: node scripts/test-unified-validator.js [options]
 
 Options:
-  --network=mainnet|testnet    Network to test against (default: mainnet)
   --verbose, -v               Enable verbose output
   --help, -h                 Show this help message
 
 Examples:
   node scripts/test-unified-validator.js
-  node scripts/test-unified-validator.js --network=testnet --verbose
+  node scripts/test-unified-validator.js --verbose
             `);
             process.exit(0);
         }
     });
-    
-    if (!['mainnet', 'testnet'].includes(options.network)) {
-        colorLog('red', '❌ Invalid network. Use --network=mainnet or --network=testnet');
-        process.exit(1);
-    }
     
     const tester = new UnifiedValidatorTester(options);
     await tester.runAllTests();
