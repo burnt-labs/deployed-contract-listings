@@ -7,6 +7,7 @@ A comprehensive registry of smart contracts deployed on the Xion blockchain, wit
 ## Overview
 
 This repository maintains a curated list of all smart contracts deployed on Xion mainnet, including:
+
 - Contract metadata (name, description, author)
 - Deployment information (code ID, hash, governance)
 - Testnet deployment status
@@ -25,6 +26,7 @@ This repository maintains a curated list of all smart contracts deployed on Xion
 ### Browse Contracts Online
 
 Visit the [GitHub Pages site](https://burnt-labs.github.io/deployed-contract-listings/) to:
+
 - Search contracts by name, author, or description
 - Filter by governance type, deployment status, and testnet availability
 - Copy code IDs and hashes with one click
@@ -55,7 +57,7 @@ npm run serve
 
 ## Repository Structure
 
-```
+```txt
 deployed-contract-listings/
 ├── contracts.json          # Main registry of all contracts
 ├── docs/                   # GitHub Pages site
@@ -112,6 +114,7 @@ npm run validate
 ```
 
 This checks:
+
 - Required fields are present
 - Data types are correct
 - Code IDs are unique and ordered
@@ -126,6 +129,7 @@ npm run verify
 ```
 
 This checks:
+
 - Contracts exist on chain with matching hashes
 - Governance proposals are correctly referenced
 - No contracts are missing from the registry
@@ -168,9 +172,9 @@ npm run build-site
 
 The registry uses these Xion endpoints:
 
-- **Mainnet API**: https://api.xion-mainnet-1.burnt.com
-- **Mainnet RPC**: https://rpc.xion-mainnet-1.burnt.com:443
-- **Testnet RPC**: https://rpc.xion-testnet-2.burnt.com:443
+- **Mainnet API**: `https://api.xion-mainnet-1.burnt.com`
+- **Mainnet RPC**: `https://rpc.xion-mainnet-1.burnt.com:443`
+- **Testnet RPC**: `https://rpc.xion-testnet-2.burnt.com:443`
 
 ## Contributing
 
@@ -184,6 +188,7 @@ We welcome contributions! Please:
 ## CI/CD
 
 GitHub Actions automatically:
+
 - Validates `contracts.json` on every push and PR
 - Verifies contracts against chain data
 - Builds and deploys the GitHub Pages site
@@ -196,6 +201,7 @@ MIT License - see LICENSE file for details
 ## Support
 
 For issues or questions:
+
 - Open an [issue](https://github.com/burnt-labs/deployed-contract-listings/issues)
 - Visit [Xion Documentation](https://docs.xion.com)
 - Join the [Xion Discord](https://discord.gg/xion)
