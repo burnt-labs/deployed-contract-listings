@@ -7,7 +7,7 @@
     "validate": "node scripts/unified-validator.js --validate-only",
     "verify": "node scripts/unified-validator.js --verify-only",
     "validate-all": "node scripts/unified-validator.js",
-    "test-validation": "node scripts/unified-validator.js --test",
+    "test-validation": "node scripts/test-unified-validator.js",
     "migrate-testnet": "tsx scripts/migrate-to-testnet.ts",
     "build-site": "node scripts/build-site.js",
     "serve": "npx http-server docs -p 8080"

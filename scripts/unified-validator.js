@@ -112,7 +112,6 @@ class UnifiedValidator {
         this.verbose = options.verbose || false;
         this.validateOnly = options.validateOnly || false;
         this.verifyOnly = options.verifyOnly || false;
-        this.runTests = options.runTests || false;
         
         this.apiBaseUrl = this.network === 'testnet' 
             ? 'https://api.xion-testnet-2.burnt.com'
@@ -491,7 +490,12 @@ class UnifiedValidator {
     generateRecommendations(discrepancies) {
         this.log('Generating recommendations...');
         
-        if (discrepancies.missingFromJson.length > 0) {
+        // Ensure recommendations array is initialized
+        if (!this.results.recommendations) {
+            this.results.recommendations = [];
+        }
+        
+        if (discrepancies.missingFromJson && discrepancies.missingFromJson.length > 0) {
             this.results.recommendations.push({
                 type: 'missing_from_json',
                 priority: 'high',
@@ -500,7 +504,7 @@ class UnifiedValidator {
             });
         }
         
-        if (discrepancies.missingFromChain.length > 0) {
+        if (discrepancies.missingFromChain && discrepancies.missingFromChain.length > 0) {
             this.results.recommendations.push({
                 type: 'missing_from_chain',
                 priority: 'medium',
@@ -509,7 +513,7 @@ class UnifiedValidator {
             });
         }
         
-        if (discrepancies.hashMismatches.length > 0) {
+        if (discrepancies.hashMismatches && discrepancies.hashMismatches.length > 0) {
             this.results.recommendations.push({
                 type: 'hash_mismatch',
                 priority: 'high',
@@ -518,7 +522,7 @@ class UnifiedValidator {
             });
         }
         
-        if (discrepancies.governanceIssues.length > 0) {
+        if (discrepancies.governanceIssues && discrepancies.governanceIssues.length > 0) {
             this.results.recommendations.push({
                 type: 'governance_issue',
                 priority: 'medium',
@@ -528,122 +532,6 @@ class UnifiedValidator {
         }
     }
 
-    // Test methods
-    async runTestSuite() {
-        this.log('Running comprehensive test suite...');
-        
-        const testResults = {
-            passed: 0,
-            failed: 0,
-            tests: []
-        };
-
-        // Test JSON validation
-        await this.runTest('JSON Structure Validation', async () => {
-            return await this.validateJsonStructure();
-        }, testResults);
-
-        // Test on-chain verification
-        await this.runTest('On-chain Verification', async () => {
-            return await this.verifyOnChainContracts();
-        }, testResults);
-
-        // Test file accessibility
-        await this.runTest('File Accessibility', async () => {
-            try {
-                const contractsPath = path.join(__dirname, '..', 'contracts.json');
-                const contractsData = JSON.parse(fs.readFileSync(contractsPath, 'utf8'));
-                return Array.isArray(contractsData) && contractsData.length > 0;
-            } catch (error) {
-                return false;
-            }
-        }, testResults);
-
-        // Test hash format validation
-        await this.runTest('Hash Format Validation', async () => {
-            try {
-                const contractsPath = path.join(__dirname, '..', 'contracts.json');
-                const contractsData = JSON.parse(fs.readFileSync(contractsPath, 'utf8'));
-                
-                let hashErrors = [];
-                contractsData.forEach((contract, index) => {
-                    if (!contract.hash || !/^[A-F0-9]{64}$/.test(contract.hash)) {
-                        hashErrors.push(`Contract ${index + 1} (${contract.name}): Invalid hash format`);
-                    }
-                });
-                
-                return hashErrors.length === 0;
-            } catch (error) {
-                return false;
-            }
-        }, testResults);
-
-        // Test duplicate code IDs
-        await this.runTest('Duplicate Code ID Detection', async () => {
-            try {
-                const contractsPath = path.join(__dirname, '..', 'contracts.json');
-                const contractsData = JSON.parse(fs.readFileSync(contractsPath, 'utf8'));
-                
-                const codeIds = new Set();
-                for (const contract of contractsData) {
-                    if (codeIds.has(contract.code_id)) {
-                        return false;
-                    }
-                    codeIds.add(contract.code_id);
-                }
-                
-                return true;
-            } catch (error) {
-                return false;
-            }
-        }, testResults);
-
-        // Test network connectivity
-        await this.runTest('Network Connectivity', async () => {
-            try {
-                const response = await fetch(`${this.apiBaseUrl}/cosmwasm/wasm/v1/code`);
-                return response.ok;
-            } catch (error) {
-                return false;
-            }
-        }, testResults);
-
-        this.printTestResults(testResults);
-        return testResults.failed === 0;
-    }
-
-    async runTest(testName, testFunction, testResults) {
-        this.log(`Running test: ${testName}`);
-        try {
-            const result = await testFunction();
-            if (result) {
-                this.log(`✅ Test passed: ${testName}`, 'success');
-                testResults.passed++;
-                testResults.tests.push({ name: testName, status: 'PASSED' });
-            } else {
-                this.log(`❌ Test failed: ${testName}`, 'error');
-                testResults.failed++;
-                testResults.tests.push({ name: testName, status: 'FAILED' });
-            }
-        } catch (error) {
-            this.log(`❌ Test error: ${testName} - ${error.message}`, 'error');
-            testResults.failed++;
-            testResults.tests.push({ name: testName, status: 'ERROR', error: error.message });
-        }
-    }
-
-    printTestResults(testResults) {
-        colorLog('cyan', '\n📊 Test Results Summary:');
-        colorLog('green', `✅ Passed: ${testResults.passed}`);
-        colorLog('red', `❌ Failed: ${testResults.failed}`);
-        colorLog('blue', `📊 Total: ${testResults.passed + testResults.failed}`);
-        
-        if (testResults.failed === 0) {
-            colorLog('green', '\n🎉 All tests passed! Contract validation system is working correctly.');
-        } else {
-            colorLog('yellow', '\n⚠️  Some tests failed. Please review the issues above.');
-        }
-    }
 
     // Main validation method
     async validate() {
@@ -652,9 +540,6 @@ class UnifiedValidator {
             
             let success = true;
 
-            if (this.runTests) {
-                return await this.runTestSuite();
-            }
 
             if (!this.verifyOnly) {
                 success = await this.validateJsonStructure() && success;
@@ -771,7 +656,6 @@ async function main() {
         verbose: false,
         validateOnly: false,
         verifyOnly: false,
-        runTests: false
     };
     
     // Parse command line arguments
@@ -784,8 +668,6 @@ async function main() {
             options.validateOnly = true;
         } else if (arg === '--verify-only') {
             options.verifyOnly = true;
-        } else if (arg === '--test') {
-            options.runTests = true;
         } else if (arg === '--help' || arg === '-h') {
             console.log(`
 Unified Contract Validator - Comprehensive contract validation tool
@@ -797,7 +679,6 @@ Options:
   --verify-only          Only verify against on-chain data
   --network=mainnet|testnet    Network to validate against (default: mainnet)
   --verbose, -v          Enable verbose output
-  --test                 Run test suite
   --help, -h             Show this help message
 
 Examples:
@@ -805,7 +686,6 @@ Examples:
   node scripts/unified-validator.js --validate-only
   node scripts/unified-validator.js --verify-only
   node scripts/unified-validator.js --network=testnet --verbose
-  node scripts/unified-validator.js --test
             `);
             process.exit(0);
         }
