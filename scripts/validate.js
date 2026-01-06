@@ -1,6 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
+const mainnetSchema = {
+  type: 'object',
+  required: ['code_id', 'hash', 'governance'],
+  properties: {
+    code_id: { type: 'string', pattern: '^[0-9]+$' },
+    hash: { 
+      type: 'string', 
+      pattern: '^[A-F0-9]{64}$',
+      message: 'Mainnet hash must be 64 characters long and contain only uppercase hex characters'
+    },
+    governance: { 
+      type: 'string',
+      pattern: '^(Genesis|[0-9]+)$'
+    }
+  }
+};
+
 const testnetSchema = {
   type: 'object',
   required: ['code_id', 'hash', 'network', 'deployed_by', 'deployed_at'],
@@ -21,16 +38,11 @@ const schema = {
   type: 'array',
   items: {
     type: 'object',
-    required: ['name', 'description', 'code_id', 'hash', 'release', 'author', 'governance', 'deprecated'],
+    required: ['name', 'description', 'release', 'author', 'deprecated'],
     properties: {
       name: { type: 'string', minLength: 1 },
       description: { type: 'string' },
-      code_id: { type: 'string', pattern: '^[0-9]+$' },
-      hash: { 
-        type: 'string', 
-        pattern: '^[A-F0-9]{64}$',
-        message: 'Mainnet hash must be 64 characters long and contain only uppercase hex characters'
-      },
+      mainnet: { ...mainnetSchema, optional: true }, // Mark mainnet as optional
       release: {
         type: 'object',
         required: ['url', 'version'],
@@ -53,10 +65,6 @@ const schema = {
           }
         }
       },
-      governance: { 
-        type: 'string',
-        pattern: '^(Genesis|[0-9]+)$'
-      },
       deprecated: { type: 'boolean' },
       testnet: { ...testnetSchema, optional: true } // Mark testnet as optional
     }
@@ -72,18 +80,18 @@ function validateJson(data, schema, path = '') {
     // Check for duplicate code IDs
     const codeIds = new Set();
     data.forEach((item, index) => {
-      if (item.code_id && codeIds.has(item.code_id)) {
-        throw new Error(`Duplicate code_id ${item.code_id} found`);
+      if (item.mainnet && item.mainnet.code_id && codeIds.has(item.mainnet.code_id)) {
+        throw new Error(`Duplicate code_id ${item.mainnet.code_id} found`);
       }
-      if (item.code_id) codeIds.add(item.code_id);
+      if (item.mainnet && item.mainnet.code_id) codeIds.add(item.mainnet.code_id);
       validateJson(item, schema.items, `${path}[${index}]`);
     });
 
     // Check code_id ordering for all contracts
     for (let i = 1; i < data.length; i++) {
-      if (data[i-1].code_id && data[i].code_id) {
-        const prevCodeId = parseInt(data[i-1].code_id);
-        const currentCodeId = parseInt(data[i].code_id);
+      if (data[i-1].mainnet && data[i-1].mainnet.code_id && data[i].mainnet && data[i].mainnet.code_id) {
+        const prevCodeId = parseInt(data[i-1].mainnet.code_id);
+        const currentCodeId = parseInt(data[i].mainnet.code_id);
         if (currentCodeId < prevCodeId) {
           throw new Error(`Contracts not in code_id order: ${data[i-1].name} (${prevCodeId}) comes before ${data[i].name} (${currentCodeId})`);
         }
@@ -125,7 +133,7 @@ function validateJson(data, schema, path = '') {
       throw new Error(`${path} must be at least ${schema.minLength} characters`);
     }
     if (schema.pattern) {
-      if (path.endsWith('.hash')) {
+      if (path.endsWith('.mainnet.hash') || path.endsWith('.hash')) {
         console.log(`DEBUG: Validating ${path} with pattern ${schema.pattern}. Value: "${data}" Length: ${data.length}`);
       }
       const regex = new RegExp(schema.pattern);

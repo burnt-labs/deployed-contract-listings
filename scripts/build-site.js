@@ -28,7 +28,12 @@ try {
     const contractsData = JSON.parse(fs.readFileSync(CONTRACTS_FILE, 'utf8'));
     
     // Sort contracts by code_id (numeric sort)
-    contractsData.sort((a, b) => parseInt(a.code_id) - parseInt(b.code_id));
+    // Contracts without mainnet go to the end
+    contractsData.sort((a, b) => {
+        const aCodeId = a.mainnet ? parseInt(a.mainnet.code_id) : Infinity;
+        const bCodeId = b.mainnet ? parseInt(b.mainnet.code_id) : Infinity;
+        return aCodeId - bCodeId;
+    });
     
     // Generate JavaScript file with contract data
     const jsContent = `// Auto-generated from contracts.json - DO NOT EDIT DIRECTLY
@@ -46,8 +51,10 @@ const contractsData = ${JSON.stringify(contractsData, null, 2)};
         total: contractsData.length,
         deprecated: contractsData.filter(c => c.deprecated).length,
         active: contractsData.filter(c => !c.deprecated).length,
-        genesis: contractsData.filter(c => c.governance === 'Genesis').length,
-        proposal: contractsData.filter(c => c.governance !== 'Genesis').length,
+        genesis: contractsData.filter(c => c.mainnet && c.mainnet.governance === 'Genesis').length,
+        proposal: contractsData.filter(c => c.mainnet && c.mainnet.governance !== 'Genesis').length,
+        withMainnet: contractsData.filter(c => c.mainnet).length,
+        withoutMainnet: contractsData.filter(c => !c.mainnet).length,
         withTestnet: contractsData.filter(c => c.testnet).length,
         withoutTestnet: contractsData.filter(c => !c.testnet).length,
         authors: [...new Set(contractsData.map(c => c.author.name))].length
@@ -58,6 +65,7 @@ const contractsData = ${JSON.stringify(contractsData, null, 2)};
     console.log(`   Total Contracts: ${stats.total}`);
     console.log(`   Active: ${stats.active} | Deprecated: ${stats.deprecated}`);
     console.log(`   Genesis: ${stats.genesis} | Via Proposal: ${stats.proposal}`);
+    console.log(`   With Mainnet: ${stats.withMainnet} | Without Mainnet: ${stats.withoutMainnet}`);
     console.log(`   With Testnet: ${stats.withTestnet} | Without Testnet: ${stats.withoutTestnet}`);
     console.log(`   Unique Authors: ${stats.authors}`);
     console.log(`\n📁 Output: ${OUTPUT_FILE}`);
