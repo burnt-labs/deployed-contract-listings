@@ -103,6 +103,11 @@ function validateJson(data, schema, path = '') {
       }
       
       // Check code_id ordering for contracts with mainnet
+      // Note: This validation ensures contracts are in ascending order by code_id, but does not
+      // require consecutive code_ids. Gaps in the sequence are acceptable as:
+      // 1. Code IDs are assigned by the blockchain and may not be consecutive
+      // 2. The registry may not include all contracts deployed on the chain
+      // 3. We only validate that listed contracts are properly ordered
       if (i > 0 && data[i-1].mainnet && data[i-1].mainnet.code_id && hasMainnet) {
         const prevCodeId = parseInt(data[i-1].mainnet.code_id);
         const currentCodeId = parseInt(data[i].mainnet.code_id);
