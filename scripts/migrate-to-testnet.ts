@@ -105,7 +105,6 @@ async function main() {
   const [account] = await wallet.getAccounts();
 
   // Connect to mainnet to get code IDs
-  const mainnetClient = await SigningCosmWasmClient.connect(MAINNET_RPC);
 
   // Connect to testnet for deployment with gas price
   const gasPrice = GasPrice.fromString("0.025uxion");
