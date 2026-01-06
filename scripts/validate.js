@@ -8,8 +8,8 @@ const mainnetSchema = {
     code_id: { type: 'string', pattern: '^[0-9]+$' },
     hash: { 
       type: 'string', 
-      pattern: '^[A-F0-9]{64}$',
-      message: 'Mainnet hash must be 64 characters long and contain only uppercase hex characters'
+      pattern: '^[a-fA-F0-9]{64}$',
+      message: 'Mainnet hash must be 64 hex characters long'
     },
     governance: { 
       type: 'string',
@@ -88,8 +88,22 @@ function validateJson(data, schema, path = '') {
     });
 
     // Check code_id ordering for all contracts
-    for (let i = 1; i < data.length; i++) {
-      if (data[i-1].mainnet && data[i-1].mainnet.code_id && data[i].mainnet && data[i].mainnet.code_id) {
+    // Contracts without mainnet should come after contracts with mainnet
+    let foundContractWithoutMainnet = false;
+    for (let i = 0; i < data.length; i++) {
+      const hasMainnet = data[i].mainnet && data[i].mainnet.code_id;
+      
+      // If we've already seen a contract without mainnet, all subsequent contracts should also be without mainnet
+      if (foundContractWithoutMainnet && hasMainnet) {
+        throw new Error(`Contracts not in correct order: ${data[i].name} has mainnet but comes after a contract without mainnet. Contracts without mainnet should be placed at the end.`);
+      }
+      
+      if (!hasMainnet) {
+        foundContractWithoutMainnet = true;
+      }
+      
+      // Check code_id ordering for contracts with mainnet
+      if (i > 0 && data[i-1].mainnet && data[i-1].mainnet.code_id && hasMainnet) {
         const prevCodeId = parseInt(data[i-1].mainnet.code_id);
         const currentCodeId = parseInt(data[i].mainnet.code_id);
         if (currentCodeId < prevCodeId) {

@@ -79,10 +79,12 @@ function filterContracts() {
         const matchesAuthor = !authorValue || contract.author.name === authorValue;
 
         // Governance filter (only applies to contracts with mainnet)
+        // If governance filter is selected, only show contracts with mainnet that match the criteria
         const matchesGovernance = !governanceValue ||
-            !contract.mainnet ||
-            (governanceValue === 'Genesis' && contract.mainnet.governance === 'Genesis') ||
-            (governanceValue === 'Proposal' && contract.mainnet.governance !== 'Genesis');
+            (contract.mainnet && (
+                (governanceValue === 'Genesis' && contract.mainnet.governance === 'Genesis') ||
+                (governanceValue === 'Proposal' && contract.mainnet.governance !== 'Genesis')
+            ));
 
         // Status filter
         const matchesStatus = !statusValue ||
