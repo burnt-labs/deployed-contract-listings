@@ -120,10 +120,6 @@ async function main() {
   for (const contract of contractsToProcess) {
     try {
       console.log(`Processing contract: ${contract.name}`);
-      if (!contract.mainnet) {
-        console.log(`Skipping ${contract.name}: no mainnet information`);
-        continue;
-      }
       const codeId = parseInt(contract.mainnet.code_id);
 
       console.log(`Downloading WASM for code ID: ${codeId}`);
