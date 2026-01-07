@@ -1452,5 +1452,65 @@
       "hash": "54992CD737BF824341F7EEFB1C5A81E4CEDD7565A7F196D688BAF7D3BAC49F21",
       "governance": "46"
     }
+  },
+  {
+    "name": "Asset Contract (NFT Collection)",
+    "description": "CW721-based NFT collection contract for the XION Marketplace",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts",
+      "version": "3e6d53dd6e690c67d5ef41d233b8d8b0548455ef"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "testnet": {
+      "code_id": "1878",
+      "hash": "8CA6FBE2AAADAC520271B288B67DBD59F2543762BD64FFF38A5185F44540FB50",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion15r5yxaeqwlx5zz5f2vwg87vz3m7d6dd5pdd6qp",
+      "deployed_at": "2025-12-31T00:00:00.000Z"
+    }
+  },
+  {
+    "name": "Marketplace Contract",
+    "description": "NFT marketplace contract enabling listing, buying, and selling of NFTs on XION",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts",
+      "version": "3e6d53dd6e690c67d5ef41d233b8d8b0548455ef"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "testnet": {
+      "code_id": "1879",
+      "hash": "9053DF192CC0E43DD84A1664927AA85F6FAD36D79773FE17F3B10FC48D622486",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion15r5yxaeqwlx5zz5f2vwg87vz3m7d6dd5pdd6qp",
+      "deployed_at": "2025-12-31T00:00:00.000Z"
+    }
+  },
+  {
+    "name": "Opacity Verifier",
+    "description": "Verifies Opacity Network signatures for TEE-based attestations on XION",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts/pull/73",
+      "version": "56c6495a51f8011eabf7eb6377d217982e6c077a"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "testnet": {
+      "code_id": "1870",
+      "hash": "56252EA74222E1B0C8B51EC9BCD3CB717961FBB0C4F0F1E8835974B5C13F880D",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion1l5fq4la4jjh827wnay8g022z69mumz84jwl6zt",
+      "deployed_at": "2025-12-12T00:00:00.000Z"
+    }
   }
 ]
