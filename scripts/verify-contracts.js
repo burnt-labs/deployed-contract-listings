@@ -80,23 +80,27 @@ async function verifyContracts() {
         const localHashes = new Map();
         const genesisContracts = new Map(); // Track Genesis contracts
         localContracts.forEach(contract => {
-            const isGenesis = contract.governance === 'Genesis';
-            localCodeIds.set(contract.code_id, {
+            // Only process contracts with mainnet information
+            if (!contract.mainnet) {
+                return;
+            }
+            const isGenesis = contract.mainnet.governance === 'Genesis';
+            localCodeIds.set(contract.mainnet.code_id, {
                 name: contract.name,
-                hash: contract.hash,
-                governance: contract.governance,
+                hash: contract.mainnet.hash,
+                governance: contract.mainnet.governance,
                 isGenesis
             });
-            localHashes.set(contract.hash, {
+            localHashes.set(contract.mainnet.hash, {
                 name: contract.name,
-                code_id: contract.code_id,
-                governance: contract.governance,
+                code_id: contract.mainnet.code_id,
+                governance: contract.mainnet.governance,
                 isGenesis
             });
             if (isGenesis) {
-                genesisContracts.set(contract.code_id, {
+                genesisContracts.set(contract.mainnet.code_id, {
                     name: contract.name,
-                    governance: contract.governance
+                    governance: contract.mainnet.governance
                 });
             }
         });

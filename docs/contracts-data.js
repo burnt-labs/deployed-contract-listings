@@ -1,14 +1,11 @@
 // Auto-generated from contracts.json - DO NOT EDIT DIRECTLY
-// Generated on 2025-08-11T23:38:52.336Z
-// Total contracts: 58
+// Generated on 2026-01-06T14:43:30.583Z
+// Total contracts: 59
 
 const contractsData = [
   {
     "name": "MetaAccount (v1.0.0)",
     "description": "Initial version of MetaAccount implementation, superseded by v2",
-    "code_id": "1",
-    "hash": "5E0F49F9686FAD66C132031EC6A43EC63AD84A2B6C8A35C555542AC84FC03708",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/burnt-labs/contracts/releases/tag/v1.0.0",
       "version": "v1.0.0"
@@ -17,13 +14,16 @@ const contractsData = [
       "name": "Burnt Labs",
       "url": "https://burnt.com"
     },
-    "deprecated": true
+    "deprecated": true,
+    "mainnet": {
+      "code_id": "1",
+      "hash": "5E0F49F9686FAD66C132031EC6A43EC63AD84A2B6C8A35C555542AC84FC03708",
+      "governance": "Genesis"
+    }
   },
   {
     "name": "Polytone Proxy",
     "description": "ICA Proxy, allows controlled execution of messages.",
-    "code_id": "2",
-    "hash": "54E909B7F9AB191A0A0DB2040E09C8CFAB45DB75CA22852098531EC301878FC2",
     "release": {
       "url": "https://github.com/DA0-DA0/polytone/releases/tag/v1.1.0",
       "version": "v1.1.0"
@@ -32,7 +32,6 @@ const contractsData = [
       "name": "DAO DAO",
       "url": "https://daodao.zone/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "501",
@@ -40,13 +39,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:22:41.924Z"
+    },
+    "mainnet": {
+      "code_id": "2",
+      "hash": "54E909B7F9AB191A0A0DB2040E09C8CFAB45DB75CA22852098531EC301878FC2",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Polytone Voice",
     "description": "Receiver of messages over IBC, executes on the destination chain. Maintains access control through the proxy (see above).",
-    "code_id": "3",
-    "hash": "3AA8F962BADEB899DB4BC6E5931C852473B5719DBA5AFF5DC26C66CDE1ED250E",
     "release": {
       "url": "https://github.com/DA0-DA0/polytone/releases/tag/v1.1.0",
       "version": "v1.1.0"
@@ -55,7 +57,6 @@ const contractsData = [
       "name": "DAO DAO",
       "url": "https://daodao.zone/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "502",
@@ -63,13 +64,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:22:46.827Z"
+    },
+    "mainnet": {
+      "code_id": "3",
+      "hash": "3AA8F962BADEB899DB4BC6E5931C852473B5719DBA5AFF5DC26C66CDE1ED250E",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Polytone Note",
     "description": "Sends messages to be executed on other chains over IBC. Handles channel management and packet routing.",
-    "code_id": "4",
-    "hash": "CD13C487B820CE79BC7932F41497274635477845C2DCAF5CD4B06332175F53EC",
     "release": {
       "url": "https://github.com/DA0-DA0/polytone/releases/tag/v1.1.0",
       "version": "v1.1.0"
@@ -78,7 +82,6 @@ const contractsData = [
       "name": "DAO DAO",
       "url": "https://daodao.zone/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "503",
@@ -86,13 +89,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:22:51.430Z"
+    },
+    "mainnet": {
+      "code_id": "4",
+      "hash": "CD13C487B820CE79BC7932F41497274635477845C2DCAF5CD4B06332175F53EC",
+      "governance": "Genesis"
     }
   },
   {
     "name": "MetaAccount (v2)",
     "description": "Second version of Xion's MetaAccount implementation",
-    "code_id": "5",
-    "hash": "FEFA4D0C57F6CA47A5D89C6F077A176D26027DB4EEFA758A929DD4C4AAF17D1B",
     "release": {
       "url": "https://github.com/burnt-labs/contracts/pull/40",
       "version": "pr40"
@@ -101,7 +107,6 @@ const contractsData = [
       "name": "Burnt Labs",
       "url": "https://burnt.com"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "504",
@@ -109,13 +114,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:22:56.009Z"
+    },
+    "mainnet": {
+      "code_id": "5",
+      "hash": "FEFA4D0C57F6CA47A5D89C6F077A176D26027DB4EEFA758A929DD4C4AAF17D1B",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw1 Subkeys",
     "description": "A Proxy contract that extends the functionality of cw1-whitelist. Allows admins to grant allowances and set permissions to 'subkeys'",
-    "code_id": "6",
-    "hash": "0DEE80010FB15A7A03FC1153389DC1EEC36482B8D872B0640B8762C14E5C3CF8",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -124,7 +132,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "505",
@@ -132,13 +139,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:00.598Z"
+    },
+    "mainnet": {
+      "code_id": "6",
+      "hash": "0DEE80010FB15A7A03FC1153389DC1EEC36482B8D872B0640B8762C14E5C3CF8",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw1 Whitelist",
     "description": "Proxy contract maintaining a list of admin addresses that can execute messages through it. Admin list defined at contract creation.",
-    "code_id": "7",
-    "hash": "86C0008909BEB14147FA99F66CA1AFB674FDCD737CCAD89C47EA2C95966F747E",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -147,7 +157,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "506",
@@ -155,13 +164,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:05.239Z"
+    },
+    "mainnet": {
+      "code_id": "7",
+      "hash": "86C0008909BEB14147FA99F66CA1AFB674FDCD737CCAD89C47EA2C95966F747E",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw3 Fixed Multisig",
     "description": "Implements a multisig wallet with a fixed set of voters defined at instantiation, each voter can have different voting weights. Allows voters to create, vote on, and execute proposals containing arbitrary messages. Supports different voting thresholds & configurable voting periods.",
-    "code_id": "8",
-    "hash": "734A8B5B958D9F3A9D97CAAEA93AAE409BD7FF21648B35B3F9A40F6DF0C39C00",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -170,7 +182,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "685",
@@ -178,13 +189,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-09T20:42:29.982Z"
+    },
+    "mainnet": {
+      "code_id": "8",
+      "hash": "734A8B5B958D9F3A9D97CAAEA93AAE409BD7FF21648B35B3F9A40F6DF0C39C00",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw3 Flex Multisig",
     "description": "An advanced multisig using a separate cw4 (group) contract to manage its voter set, allowing multiple multisigs to share the same group of voters with different voting thresholds.",
-    "code_id": "9",
-    "hash": "8047BC30ED7129F24D4A89E7527C4926D3363A6BA038830A592A2041301553CF",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -193,7 +207,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "507",
@@ -201,13 +214,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:10.888Z"
+    },
+    "mainnet": {
+      "code_id": "9",
+      "hash": "8047BC30ED7129F24D4A89E7527C4926D3363A6BA038830A592A2041301553CF",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw4 Group",
     "description": "Manages group membership with weighted voting power. Maintains a list of members, controlled by an admin with rights to add or remove members.",
-    "code_id": "10",
-    "hash": "4604A284E209C2FE320F223B9FD29805A0E8F2CF8EA7B01FAC28C3EFC4EE63F0",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -216,7 +232,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "508",
@@ -224,14 +239,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:15.346Z"
+    },
+    "mainnet": {
+      "code_id": "10",
+      "hash": "4604A284E209C2FE320F223B9FD29805A0E8F2CF8EA7B01FAC28C3EFC4EE63F0",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw4 Stake",
     "description": "cw4 Stake",
-    "code_id": "11",
-    "hash": "DCA8257AD67CCB15B4A61A882131B9D3FDD0DD178B121BB51BBDA35B682C6653",
-    "governance": "Genesis",
     "deprecated": true,
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
@@ -240,13 +257,16 @@ const contractsData = [
     "author": {
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
+    },
+    "mainnet": {
+      "code_id": "11",
+      "hash": "DCA8257AD67CCB15B4A61A882131B9D3FDD0DD178B121BB51BBDA35B682C6653",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw4 Stake",
     "description": "Determines group membership and voting weights based on the amount of tokens (native or cw20) that users have staked, with configurable parameters like minimum bond amount and tokens-per-weight ratio.",
-    "code_id": "12",
-    "hash": "DCA8257AD67CCB15B4A61A882131B9D3FDD0DD178B121BB51BBDA35B682C6653",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -255,7 +275,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "509",
@@ -263,13 +282,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:19.899Z"
+    },
+    "mainnet": {
+      "code_id": "12",
+      "hash": "DCA8257AD67CCB15B4A61A882131B9D3FDD0DD178B121BB51BBDA35B682C6653",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw20 Base",
     "description": "Implementation of the CW20 token standard in CosmWasm.",
-    "code_id": "13",
-    "hash": "4D8E90DD340993033F1B9E8E3A3EE7F8673C582CA9BCDD8C8CF3C7470D6537D5",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -278,7 +300,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "510",
@@ -286,13 +307,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:24.559Z"
+    },
+    "mainnet": {
+      "code_id": "13",
+      "hash": "4D8E90DD340993033F1B9E8E3A3EE7F8673C582CA9BCDD8C8CF3C7470D6537D5",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw20 ics20",
     "description": "Enables CW20 tokens to be sent over IBC using the ICS20 protocol, allowing custom CW20 tokens from one chain to be used like native tokens on other chains.",
-    "code_id": "14",
-    "hash": "A63BA1554095B6AC04D2F08246ABCCFA7F1C2276BF19F52A943EE5B85FD7749B",
     "release": {
       "url": "https://github.com/CosmWasm/cw-plus/releases/tag/v2.0.0",
       "version": "v2.0.0"
@@ -301,7 +325,6 @@ const contractsData = [
       "name": "CosmWasm",
       "url": "https://cosmwasm.com/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "511",
@@ -309,13 +332,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:29.188Z"
+    },
+    "mainnet": {
+      "code_id": "14",
+      "hash": "A63BA1554095B6AC04D2F08246ABCCFA7F1C2276BF19F52A943EE5B85FD7749B",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Treasury",
     "description": "Treasury",
-    "code_id": "15",
-    "hash": "6A30325831651208E07F9A9F6FE5B29ADD99D6EDBDF5601C4AF9856D287E56E6",
     "release": {
       "url": "https://github.com/burnt-labs/contracts/commit/8224140b66da51fcdef25227a195d2dee16cc422",
       "version": "v0.1.0"
@@ -324,7 +350,6 @@ const contractsData = [
       "name": "Burnt Labs",
       "url": "https://burnt.com"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "512",
@@ -332,13 +357,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:34.021Z"
+    },
+    "mainnet": {
+      "code_id": "15",
+      "hash": "6A30325831651208E07F9A9F6FE5B29ADD99D6EDBDF5601C4AF9856D287E56E6",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract Account",
     "description": "Abstract Account",
-    "code_id": "16",
-    "hash": "D3D18E16A185FD5D82A510D2D51E8849E1135A1EF23090738ED90CE1F2E377DA",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -347,7 +375,6 @@ const contractsData = [
       "name": "Abstract Money",
       "url": "https://abstract.money/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "513",
@@ -355,13 +382,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:38.998Z"
+    },
+    "mainnet": {
+      "code_id": "16",
+      "hash": "D3D18E16A185FD5D82A510D2D51E8849E1135A1EF23090738ED90CE1F2E377DA",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract Acccount (XION)",
     "description": "Abstract Acccount (XION)",
-    "code_id": "17",
-    "hash": "A46BECDFECDECF94837B3D424826E78A483AF4F1E248EA378BFD5D702C5761AD",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -370,7 +400,6 @@ const contractsData = [
       "name": "Abstract Money",
       "url": "https://abstract.money/"
     },
-    "governance": "Genesis",
     "deprecated": false,
     "testnet": {
       "code_id": "514",
@@ -378,14 +407,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:44.110Z"
+    },
+    "mainnet": {
+      "code_id": "17",
+      "hash": "A46BECDFECDECF94837B3D424826E78A483AF4F1E248EA378BFD5D702C5761AD",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract ANS Host",
     "description": "Abstract ANS Host",
-    "code_id": "18",
-    "hash": "B34F0DF05BAC1D769A87389B7856554751B5608D485943E98BC526A4C3322ADB",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -401,14 +432,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:48.716Z"
+    },
+    "mainnet": {
+      "code_id": "18",
+      "hash": "B34F0DF05BAC1D769A87389B7856554751B5608D485943E98BC526A4C3322ADB",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract IBC Client",
     "description": "Abstract IBC Client",
-    "code_id": "19",
-    "hash": "919A489D744E4384FDC9E3706AA7C37E80A25D39083FF028956BA300AD9AC2E8",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -424,14 +457,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:53.582Z"
+    },
+    "mainnet": {
+      "code_id": "19",
+      "hash": "919A489D744E4384FDC9E3706AA7C37E80A25D39083FF028956BA300AD9AC2E8",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract IBC Host",
     "description": "Abstract IBC Host",
-    "code_id": "20",
-    "hash": "1FA61DFAE0CF886FEB9EA6A5AFFAA84F478781B243D57B2CBFBDB01F9395AF5B",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -447,14 +482,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:23:58.327Z"
+    },
+    "mainnet": {
+      "code_id": "20",
+      "hash": "1FA61DFAE0CF886FEB9EA6A5AFFAA84F478781B243D57B2CBFBDB01F9395AF5B",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract ICA Client",
     "description": "Abstract ICA Client",
-    "code_id": "21",
-    "hash": "E23F28815FB7673BA3C78AA81E2C738F648A7A610111341E60A1B29E2306B8E3",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -470,14 +507,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:03.897Z"
+    },
+    "mainnet": {
+      "code_id": "21",
+      "hash": "E23F28815FB7673BA3C78AA81E2C738F648A7A610111341E60A1B29E2306B8E3",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract Module Factory",
     "description": "Abstract Module Factory",
-    "code_id": "22",
-    "hash": "9B287AFE1380CB886B161C66582255BF03DAD5EACFD27DF24FE89ADB81D2436D",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -493,14 +532,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:08.645Z"
+    },
+    "mainnet": {
+      "code_id": "22",
+      "hash": "9B287AFE1380CB886B161C66582255BF03DAD5EACFD27DF24FE89ADB81D2436D",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Abstract Registry",
     "description": "Abstract Registry",
-    "code_id": "23",
-    "hash": "647047E79FEAF28D36A49372877703555C80F5B45B18C9ADB8BBBCFBCA421CD5",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/AbstractSDK/abstract/releases/tag/v0.25.0",
       "version": "v0.25.0"
@@ -516,14 +557,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:13.464Z"
+    },
+    "mainnet": {
+      "code_id": "23",
+      "hash": "647047E79FEAF28D36A49372877703555C80F5B45B18C9ADB8BBBCFBCA421CD5",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Multiquery",
     "description": "Multiquery",
-    "code_id": "24",
-    "hash": "C3282C016874B7FE7F4127F0695D42003C92EBA1C1BB10CC16BC584BAB186205",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/AbstractSDK/multiquery/commit/ae6b4225c9a3086a4f353522f5b03343138b16e1",
       "version": "ae6b422"
@@ -539,14 +582,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:17.980Z"
+    },
+    "mainnet": {
+      "code_id": "24",
+      "hash": "C3282C016874B7FE7F4127F0695D42003C92EBA1C1BB10CC16BC584BAB186205",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw721 Base",
     "description": "cw721 Base",
-    "code_id": "25",
-    "hash": "E13AA30E0D70EA895B294AD1BC809950E60FE081B322B1657F75B67BE6021B1C",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/public-awesome/cw-nfts/releases/tag/v0.19.0",
       "version": "v0.19.0"
@@ -562,14 +607,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:22.855Z"
+    },
+    "mainnet": {
+      "code_id": "25",
+      "hash": "E13AA30E0D70EA895B294AD1BC809950E60FE081B322B1657F75B67BE6021B1C",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw721 Expiration",
     "description": "cw721 Expiration",
-    "code_id": "26",
-    "hash": "EC8FE99C35618D786C6DC5F83293FC37CD98C4A297CF6AA9D150F64941E6442D",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/public-awesome/cw-nfts/releases/tag/v0.19.0",
       "version": "v0.19.0"
@@ -585,14 +632,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:27.767Z"
+    },
+    "mainnet": {
+      "code_id": "26",
+      "hash": "EC8FE99C35618D786C6DC5F83293FC37CD98C4A297CF6AA9D150F64941E6442D",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw721 Fixed Price",
     "description": "cw721 Fixed Price",
-    "code_id": "27",
-    "hash": "A58EE79215200778768FE3862F7C995B1BE35FBF3AB34C2DE715E5B9D77DCCBB",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/public-awesome/cw-nfts/releases/tag/v0.19.0",
       "version": "v0.19.0"
@@ -608,14 +657,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:32.167Z"
+    },
+    "mainnet": {
+      "code_id": "27",
+      "hash": "A58EE79215200778768FE3862F7C995B1BE35FBF3AB34C2DE715E5B9D77DCCBB",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw721 Metadata Onchain",
     "description": "cw721 Metadata Onchain",
-    "code_id": "28",
-    "hash": "51A70227FF5DC29C38DC514B0F32BB474ECB82FFFA3C029C6789578A55925143",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/public-awesome/cw-nfts/releases/tag/v0.19.0",
       "version": "v0.19.0"
@@ -631,14 +682,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:37.064Z"
+    },
+    "mainnet": {
+      "code_id": "28",
+      "hash": "51A70227FF5DC29C38DC514B0F32BB474ECB82FFFA3C029C6789578A55925143",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw721 Non-Transferable",
     "description": "cw721 Non-Transferable",
-    "code_id": "29",
-    "hash": "68D5DB29833B0C25A1DD4C8D837038528E521EF3622D9945FFCB0B70676FCABE",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/public-awesome/cw-nfts/releases/tag/v0.19.0",
       "version": "v0.19.0"
@@ -654,14 +707,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:41.918Z"
+    },
+    "mainnet": {
+      "code_id": "29",
+      "hash": "68D5DB29833B0C25A1DD4C8D837038528E521EF3622D9945FFCB0B70676FCABE",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw721 Receiver Tester",
     "description": "cw721 Receiver Tester",
-    "code_id": "30",
-    "hash": "FEBB507E5FDA85C8C450CF28DCFBCBFB1BF17DECE43B7B7ECAD14D2FAD20C828",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/public-awesome/cw-nfts/releases/tag/v0.19.0",
       "version": "v0.19.0"
@@ -677,14 +732,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:46.268Z"
+    },
+    "mainnet": {
+      "code_id": "30",
+      "hash": "FEBB507E5FDA85C8C450CF28DCFBCBFB1BF17DECE43B7B7ECAD14D2FAD20C828",
+      "governance": "Genesis"
     }
   },
   {
     "name": "cw2981 Royalties",
     "description": "cw2981 Royalties",
-    "code_id": "31",
-    "hash": "5BC7CE4A04A747FAFD1A139F2DB73E7EAC094C6D3882AF8E055D15FFD3EE67E8",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/public-awesome/cw-nfts/releases/tag/v0.19.0",
       "version": "v0.19.0"
@@ -700,14 +757,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:51.072Z"
+    },
+    "mainnet": {
+      "code_id": "31",
+      "hash": "5BC7CE4A04A747FAFD1A139F2DB73E7EAC094C6D3882AF8E055D15FFD3EE67E8",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Mercle Mint with Claim",
     "description": "Mercle Mint with Claim",
-    "code_id": "32",
-    "hash": "E1472FCB9275B908A931A1EA789AA8232EDF275D2EFEA05736BB786180CA91A1",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/mercledao/MercleCosmwasmContracts/commit/18ceaf7e1a57a1dbf189da6e3a173618d4ea64fa",
       "version": "18ceaf7"
@@ -723,14 +782,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:55.424Z"
+    },
+    "mainnet": {
+      "code_id": "32",
+      "hash": "E1472FCB9275B908A931A1EA789AA8232EDF275D2EFEA05736BB786180CA91A1",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Mercle NFT Membership",
     "description": "Mercle NFT Membership",
-    "code_id": "33",
-    "hash": "B8998FEF98FBC7DE80437E41D4F2372CC471237F2D3F0A94F151B195C3418A33",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/mercledao/MercleCosmwasmContracts/commit/18ceaf7e1a57a1dbf189da6e3a173618d4ea64fa",
       "version": "18ceaf7"
@@ -746,14 +807,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:24:59.970Z"
+    },
+    "mainnet": {
+      "code_id": "33",
+      "hash": "B8998FEF98FBC7DE80437E41D4F2372CC471237F2D3F0A94F151B195C3418A33",
+      "governance": "Genesis"
     }
   },
   {
     "name": "BonusBlock Badge Minter",
     "description": "BonusBlock Badge Minter",
-    "code_id": "34",
-    "hash": "933AF6AB10A1024CBC0627C4E31DD87FC37F4C70A76C6C4DE9DB06FBFE229DEF",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/BBlockLabs/BonusBlock-Minter-SC-Rust/commit/202538de73d52f0ff66a8e2abb9baaad4ee98053",
       "version": "202538d"
@@ -769,14 +832,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:04.423Z"
+    },
+    "mainnet": {
+      "code_id": "34",
+      "hash": "933AF6AB10A1024CBC0627C4E31DD87FC37F4C70A76C6C4DE9DB06FBFE229DEF",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Talis Collection Offer",
     "description": "Talis Collection Offer",
-    "code_id": "35",
-    "hash": "8524BEE102B7E1B6C85D0ED1DE7C47EA9B7AA2B51845D5DFDAB1EA645599B4DD",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -792,14 +857,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:08.965Z"
+    },
+    "mainnet": {
+      "code_id": "35",
+      "hash": "8524BEE102B7E1B6C85D0ED1DE7C47EA9B7AA2B51845D5DFDAB1EA645599B4DD",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Talis English Auction",
     "description": "Talis English Auction",
-    "code_id": "36",
-    "hash": "36FABE3758D19F4285C0B503579FABB06D702B09BCE74CD0FF8AB8987152EE36",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -815,14 +882,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:13.633Z"
+    },
+    "mainnet": {
+      "code_id": "36",
+      "hash": "36FABE3758D19F4285C0B503579FABB06D702B09BCE74CD0FF8AB8987152EE36",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Talis Marketplace",
     "description": "Talis Marketplace",
-    "code_id": "37",
-    "hash": "0B9D0EF7D459A86062A77924EE440ECAC9A0BF21F6A201126032A353C1E19CCF",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -838,14 +907,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:18.129Z"
+    },
+    "mainnet": {
+      "code_id": "37",
+      "hash": "0B9D0EF7D459A86062A77924EE440ECAC9A0BF21F6A201126032A353C1E19CCF",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Talis Multi-Flavor",
     "description": "Talis Multi-Flavor",
-    "code_id": "38",
-    "hash": "5D6EB094E88C8BE613570C612D74951BA9D5BDBD0D772B8987E68AE62D30B9DD",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -861,14 +932,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:22.772Z"
+    },
+    "mainnet": {
+      "code_id": "38",
+      "hash": "5D6EB094E88C8BE613570C612D74951BA9D5BDBD0D772B8987E68AE62D30B9DD",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Talis PoC Candy Mint",
     "description": "Talis PoC Candy Mint",
-    "code_id": "40",
-    "hash": "811E37F714B7229BB6731A98EDA48CF4A2438E3CEA4B8BFC31B7F7CAF277B0FD",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -884,14 +957,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:27.357Z"
+    },
+    "mainnet": {
+      "code_id": "40",
+      "hash": "811E37F714B7229BB6731A98EDA48CF4A2438E3CEA4B8BFC31B7F7CAF277B0FD",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Talis Xion Proxy",
     "description": "Talis Xion Proxy",
-    "code_id": "41",
-    "hash": "21C147C2EC45190437367407B22D18717E137722EA3C8C4F410C05E55C403A57",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -907,14 +982,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:31.797Z"
+    },
+    "mainnet": {
+      "code_id": "41",
+      "hash": "21C147C2EC45190437367407B22D18717E137722EA3C8C4F410C05E55C403A57",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Astroport Factory",
     "description": "Astroport Factory",
-    "code_id": "42",
-    "hash": "56EA99FB759B2DF28D18A0B1CFCCD4A0CACBADA3E7254DC2842D188277727CFB",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/astroport-fi/astroport-core/releases/tag/v5.7.0",
       "version": "v5.7.0"
@@ -930,14 +1007,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:36.488Z"
+    },
+    "mainnet": {
+      "code_id": "42",
+      "hash": "56EA99FB759B2DF28D18A0B1CFCCD4A0CACBADA3E7254DC2842D188277727CFB",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Astroport Maker",
     "description": "Astroport Maker",
-    "code_id": "43",
-    "hash": "ADEFC4EE995B783BC45B0C338A6299A03FDEADB1F69CED4C2B6F22AF07B9EC1A",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/astroport-fi/astroport-core/releases/tag/v5.7.0",
       "version": "v5.7.0"
@@ -953,14 +1032,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:43.771Z"
+    },
+    "mainnet": {
+      "code_id": "43",
+      "hash": "ADEFC4EE995B783BC45B0C338A6299A03FDEADB1F69CED4C2B6F22AF07B9EC1A",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Astroport Native Coin Registry",
     "description": "Astroport Native Coin Registry",
-    "code_id": "44",
-    "hash": "2958D95914D24E4856D10877C38740B955C760F86D2B082EDCF19691809D378E",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/astroport-fi/astroport-core/releases/tag/v5.7.0",
       "version": "v5.7.0"
@@ -976,14 +1057,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:48.147Z"
+    },
+    "mainnet": {
+      "code_id": "44",
+      "hash": "2958D95914D24E4856D10877C38740B955C760F86D2B082EDCF19691809D378E",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Astroport Pair",
     "description": "Astroport Pair",
-    "code_id": "45",
-    "hash": "88C14F95C3BCBB0B8AABC433DC28F49373FD25EAB7141A881AC310BE4B04979D",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/astroport-fi/astroport-core/releases/tag/v5.7.0",
       "version": "v5.7.0"
@@ -999,14 +1082,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:52.766Z"
+    },
+    "mainnet": {
+      "code_id": "45",
+      "hash": "88C14F95C3BCBB0B8AABC433DC28F49373FD25EAB7141A881AC310BE4B04979D",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Astroport Router",
     "description": "Astroport Router",
-    "code_id": "46",
-    "hash": "6FEF673B1318C84AC8AB2CA81B2CDCA96B8C8C9D0995B8038D919F539AE7C3CC",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/astroport-fi/astroport-core/releases/tag/v5.7.0",
       "version": "v5.7.0"
@@ -1022,14 +1107,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:25:57.157Z"
+    },
+    "mainnet": {
+      "code_id": "46",
+      "hash": "6FEF673B1318C84AC8AB2CA81B2CDCA96B8C8C9D0995B8038D919F539AE7C3CC",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Astroport TokenFactory Tracker",
     "description": "Astroport TokenFactory Tracker",
-    "code_id": "47",
-    "hash": "B0C14C860F1473B007A734DCC4ADBA1D3B52CECC660465670033F6E875014318",
-    "governance": "Genesis",
     "release": {
       "url": "https://github.com/astroport-fi/astroport-core/releases/tag/v5.7.0",
       "version": "v5.7.0"
@@ -1045,14 +1132,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:01.549Z"
+    },
+    "mainnet": {
+      "code_id": "47",
+      "hash": "B0C14C860F1473B007A734DCC4ADBA1D3B52CECC660465670033F6E875014318",
+      "governance": "Genesis"
     }
   },
   {
     "name": "Talis Whitelist",
     "description": "Talis Whitelist",
-    "code_id": "48",
-    "hash": "37360FDE0EE1384AA56781B0D05D4B0187843AE96335158DFEAD7806106DE779",
-    "governance": "18",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -1068,14 +1157,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:05.977Z"
+    },
+    "mainnet": {
+      "code_id": "48",
+      "hash": "37360FDE0EE1384AA56781B0D05D4B0187843AE96335158DFEAD7806106DE779",
+      "governance": "18"
     }
   },
   {
     "name": "Talis Staking",
     "description": "Talis Staking",
-    "code_id": "49",
-    "hash": "9C9047420A5B870D490585C753FFB46C97E310A55E9FCF50EA784BAFC2A701FD",
-    "governance": "18",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -1091,14 +1182,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:10.441Z"
+    },
+    "mainnet": {
+      "code_id": "49",
+      "hash": "9C9047420A5B870D490585C753FFB46C97E310A55E9FCF50EA784BAFC2A701FD",
+      "governance": "18"
     }
   },
   {
     "name": "Talis Frens Proxy",
     "description": "Talis Frens Proxy",
-    "code_id": "50",
-    "hash": "919FF797B7F35A40B5D32B506C2C05918DAA1C42B89C6864425F2047B5BC19F7",
-    "governance": "18",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -1114,14 +1207,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:15.107Z"
+    },
+    "mainnet": {
+      "code_id": "50",
+      "hash": "919FF797B7F35A40B5D32B506C2C05918DAA1C42B89C6864425F2047B5BC19F7",
+      "governance": "18"
     }
   },
   {
     "name": "Talis Trading Escrow",
     "description": "Talis Trading Escrow",
-    "code_id": "51",
-    "hash": "01AA4D93B63871DE8E94B35FECAA0E586C8B4824A8B0EE833416303796B256E2",
-    "governance": "18",
     "release": {
       "url": "https://github.com/Talis-Art/talis_contracts_v2/commit/f084f5b7950f911b16090dfd38e1c06a177a1da8",
       "version": "f084f5b"
@@ -1137,13 +1232,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:20.503Z"
+    },
+    "mainnet": {
+      "code_id": "51",
+      "hash": "01AA4D93B63871DE8E94B35FECAA0E586C8B4824A8B0EE833416303796B256E2",
+      "governance": "18"
     }
   },
   {
     "name": "Fractit",
     "description": "A protocol for the fractional ownership of NFTs",
-    "code_id": "52",
-    "hash": "F6D5ADDC062B5B45BCA207EAF49B8D2736A2D7F86956FCE4D5176E3D07C91980",
     "release": {
       "url": "https://github.com/Fractit/fractible_xion",
       "version": "b62e2bc8aa7646e73bceb07af67137c48c5a7488"
@@ -1152,7 +1250,6 @@ const contractsData = [
       "name": "Fractit",
       "url": "https://fractit.com"
     },
-    "governance": "21",
     "deprecated": false,
     "testnet": {
       "code_id": "548",
@@ -1160,13 +1257,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:24.937Z"
+    },
+    "mainnet": {
+      "code_id": "52",
+      "hash": "F6D5ADDC062B5B45BCA207EAF49B8D2736A2D7F86956FCE4D5176E3D07C91980",
+      "governance": "21"
     }
   },
   {
     "name": "Fractit Inception Pass",
     "description": "Protocol for managing Fractit Inception Pass NFTs",
-    "code_id": "53",
-    "hash": "D45A22411A5C430A2C74248A20391618F5E0ECDD1BDC579C87493823E242663F",
     "release": {
       "url": "https://github.com/Fractit/fractible_xion",
       "version": "2eb952db4592ea3965070c1199117927319f433b"
@@ -1175,7 +1275,6 @@ const contractsData = [
       "name": "Fractit",
       "url": "https://fractit.com"
     },
-    "governance": "22",
     "deprecated": false,
     "testnet": {
       "code_id": "549",
@@ -1183,13 +1282,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:29.362Z"
+    },
+    "mainnet": {
+      "code_id": "53",
+      "hash": "D45A22411A5C430A2C74248A20391618F5E0ECDD1BDC579C87493823E242663F",
+      "governance": "22"
     }
   },
   {
     "name": "Thrive Protocol",
     "description": "First Thrive Protocol contract implementation on XION, enabling to distribute rewards achieved in Thrive XION",
-    "code_id": "54",
-    "hash": "BB2FAC1091B93026A0CD57AE40E814A916D9CFC4A7B4F23F1E49A28D7ABEF286",
     "release": {
       "url": "https://github.com/ThriveCoin/tp-xion-reward-contract-rs",
       "version": "cd3f0e36d50f06b4f6a04511ff67bfb7b515829b"
@@ -1198,7 +1300,6 @@ const contractsData = [
       "name": "Thrive Protocol",
       "url": "https://thriveprotocol.com"
     },
-    "governance": "24",
     "deprecated": false,
     "testnet": {
       "code_id": "550",
@@ -1206,14 +1307,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:33.706Z"
+    },
+    "mainnet": {
+      "code_id": "54",
+      "hash": "BB2FAC1091B93026A0CD57AE40E814A916D9CFC4A7B4F23F1E49A28D7ABEF286",
+      "governance": "24"
     }
   },
   {
     "name": "MetaAccount (v3)",
     "description": "Third version of Xion's MetaAccount implementation",
-    "code_id": "55",
-    "hash": "6FD7AA76AA9ED8E6F55D16093EE64611CCFB9743AC5A07B71AD4ACB342AF0EBF",
-    "governance": "26",
     "release": {
       "url": "https://github.com/burnt-labs/contracts",
       "version": "98fb64c9c4d917ba9e4b223b64558a2fd4c09ac7"
@@ -1229,13 +1332,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-08T18:26:38.357Z"
+    },
+    "mainnet": {
+      "code_id": "55",
+      "hash": "6FD7AA76AA9ED8E6F55D16093EE64611CCFB9743AC5A07B71AD4ACB342AF0EBF",
+      "governance": "26"
     }
   },
   {
     "name": "XION Markets Factory Contract",
     "description": "Protocol's proxy/deployer contract for all the markets. Responsible for enumerables and indexing of data and statistics across the XIONMarkets protocol.",
-    "code_id": "56",
-    "hash": "C877A97EDEA41408088644E7CE205C141C472C822EA7033E0439274928CC1D99",
     "release": {
       "url": "https://github.com/XIONMarkets/xionmarkets-smart-contracts",
       "version": "v1.0.0"
@@ -1244,7 +1350,6 @@ const contractsData = [
       "name": "XION Markets",
       "url": "https://x.com/xionmarkets"
     },
-    "governance": "27",
     "deprecated": false,
     "testnet": {
       "code_id": "686",
@@ -1252,13 +1357,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-09T20:42:38.376Z"
+    },
+    "mainnet": {
+      "code_id": "56",
+      "hash": "C877A97EDEA41408088644E7CE205C141C472C822EA7033E0439274928CC1D99",
+      "governance": "27"
     }
   },
   {
     "name": "XION Markets Market Contract",
     "description": "Model for the markets (events) that facilitates trading of shares (Yes or No), provision of liquidity, removal of liquidity and all core functionality of the protocol.",
-    "code_id": "57",
-    "hash": "4CFC7E3BB774D3528749A10582652218910CF9344514F59C88A1EC15C128BAA7",
     "release": {
       "url": "https://github.com/XIONMarkets/xionmarkets-smart-contracts",
       "version": "v1.0.0"
@@ -1267,7 +1375,6 @@ const contractsData = [
       "name": "XION Markets",
       "url": "https://x.com/xionmarkets"
     },
-    "governance": "27",
     "deprecated": false,
     "testnet": {
       "code_id": "687",
@@ -1275,13 +1382,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-09T20:42:43.181Z"
+    },
+    "mainnet": {
+      "code_id": "57",
+      "hash": "4CFC7E3BB774D3528749A10582652218910CF9344514F59C88A1EC15C128BAA7",
+      "governance": "27"
     }
   },
   {
     "name": "Pyth Oracle Contract",
     "description": "Pyth Network price feeds contract providing real-time financial market data to smart contract applications",
-    "code_id": "58",
-    "hash": "CA4DEAD04CFFC986BB05B9FA792327AC4EA2609EC928EF44DD7F48D3E16995F5",
     "release": {
       "url": "https://github.com/pyth-network/pyth-crosschain/tree/main/target_chains/cosmwasm",
       "version": "v1.0.0"
@@ -1290,7 +1400,6 @@ const contractsData = [
       "name": "Pyth Network",
       "url": "https://www.pyth.network/"
     },
-    "governance": "28",
     "deprecated": false,
     "testnet": {
       "code_id": "688",
@@ -1298,13 +1407,16 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-09T20:42:47.931Z"
+    },
+    "mainnet": {
+      "code_id": "58",
+      "hash": "CA4DEAD04CFFC986BB05B9FA792327AC4EA2609EC928EF44DD7F48D3E16995F5",
+      "governance": "28"
     }
   },
   {
     "name": "Pyth Oracle Wormhole Dependency",
     "description": "Wormhole dependency for the Pyth Network oracle implementation",
-    "code_id": "59",
-    "hash": "42133359E82BF07E446F6E75D360A0E1F4E164C66138AA4A5D2EDA3A75005026",
     "release": {
       "url": "https://github.com/pyth-network/pyth-crosschain/tree/main/target_chains/cosmwasm",
       "version": "v1.0.0"
@@ -1313,7 +1425,6 @@ const contractsData = [
       "name": "Pyth Network",
       "url": "https://www.pyth.network/"
     },
-    "governance": "28",
     "deprecated": false,
     "testnet": {
       "code_id": "689",
@@ -1321,6 +1432,29 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion1q9lqzpc73fewqva98pwaqvezaf9vqqulw3hmmx",
       "deployed_at": "2025-04-09T20:42:52.745Z"
+    },
+    "mainnet": {
+      "code_id": "59",
+      "hash": "42133359E82BF07E446F6E75D360A0E1F4E164C66138AA4A5D2EDA3A75005026",
+      "governance": "28"
+    }
+  },
+  {
+    "name": "Treasury (v2)",
+    "description": "Upgraded Treasury contract implementation",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts",
+      "version": "v0.2.0"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "63",
+      "hash": "54992CD737BF824341F7EEFB1C5A81E4CEDD7565A7F196D688BAF7D3BAC49F21",
+      "governance": "46"
     }
   }
 ];
