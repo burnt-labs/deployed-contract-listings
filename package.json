@@ -22,7 +22,7 @@
     "@cosmjs/cosmwasm-stargate": "^0.33.1",
     "@cosmjs/proto-signing": "^0.33.1",
     "@cosmjs/stargate": "^0.33.1",
-    "axios": "^1.8.4",
+    "axios": "^1.12.1",
     "dotenv": "^16.4.7"
   },
   "devDependencies": {
