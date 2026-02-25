@@ -1,5 +1,5 @@
 // Auto-generated from contracts.json - DO NOT EDIT DIRECTLY
-// Generated on 2026-01-07T14:22:04.497Z
+// Generated on 2026-02-25T17:28:27.692Z
 // Total contracts: 62
 
 const contractsData = [
@@ -1469,6 +1469,11 @@ const contractsData = [
       "url": "https://burnt.com"
     },
     "deprecated": false,
+    "mainnet": {
+      "code_id": "64",
+      "hash": "8CA6FBE2AAADAC520271B288B67DBD59F2543762BD64FFF38A5185F44540FB50",
+      "governance": "52"
+    },
     "testnet": {
       "code_id": "1878",
       "hash": "8CA6FBE2AAADAC520271B288B67DBD59F2543762BD64FFF38A5185F44540FB50",
@@ -1489,6 +1494,11 @@ const contractsData = [
       "url": "https://burnt.com"
     },
     "deprecated": false,
+    "mainnet": {
+      "code_id": "65",
+      "hash": "9053DF192CC0E43DD84A1664927AA85F6FAD36D79773FE17F3B10FC48D622486",
+      "governance": "53"
+    },
     "testnet": {
       "code_id": "1879",
       "hash": "9053DF192CC0E43DD84A1664927AA85F6FAD36D79773FE17F3B10FC48D622486",
