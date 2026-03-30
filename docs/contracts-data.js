@@ -1,5 +1,5 @@
 // Auto-generated from contracts.json - DO NOT EDIT DIRECTLY
-// Generated on 2026-03-30T13:10:40.474Z
+// Generated on 2026-03-30T14:05:44.703Z
 // Total contracts: 63
 
 const contractsData = [
@@ -1508,8 +1508,8 @@ const contractsData = [
     }
   },
   {
-    "name": "TradeOS CosmWasm",
-    "description": "TradeOS CosmWasm contract: claim verification, ownership, and emergency withdrawals for the TradeOS stack on XION",
+    "name": "TradeOS Vault Contract",
+    "description": "TradeOS Vault contract: claim verification, ownership, and emergency withdrawals for the TradeOS vault on XION",
     "release": {
       "url": "https://github.com/burnt-labs/tradeos-cw-sc",
       "version": "v0.1.0"
