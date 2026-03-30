@@ -1,6 +1,6 @@
 // Auto-generated from contracts.json - DO NOT EDIT DIRECTLY
-// Generated on 2026-02-25T17:28:27.692Z
-// Total contracts: 62
+// Generated on 2026-03-30T13:10:40.474Z
+// Total contracts: 63
 
 const contractsData = [
   {
@@ -1505,6 +1505,31 @@ const contractsData = [
       "network": "xion-testnet-2",
       "deployed_by": "xion15r5yxaeqwlx5zz5f2vwg87vz3m7d6dd5pdd6qp",
       "deployed_at": "2025-12-31T00:00:00.000Z"
+    }
+  },
+  {
+    "name": "TradeOS CosmWasm",
+    "description": "TradeOS CosmWasm contract: claim verification, ownership, and emergency withdrawals for the TradeOS stack on XION",
+    "release": {
+      "url": "https://github.com/burnt-labs/tradeos-cw-sc",
+      "version": "v0.1.0"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "66",
+      "hash": "45055180AB8DCCBF88F27FEC06765F58F95D55199480374377A61481E965315C",
+      "governance": "56"
+    },
+    "testnet": {
+      "code_id": "2026",
+      "hash": "45055180AB8DCCBF88F27FEC06765F58F95D55199480374377A61481E965315C",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion1epzznazp28up4asses7jdcyqnw3n8lu7f5g9xs",
+      "deployed_at": "2026-03-12T14:35:08.568Z"
     }
   },
   {
