@@ -1,6 +1,6 @@
 // Auto-generated from contracts.json - DO NOT EDIT DIRECTLY
-// Generated on 2026-01-07T14:22:04.497Z
-// Total contracts: 62
+// Generated on 2026-03-30T14:05:44.703Z
+// Total contracts: 63
 
 const contractsData = [
   {
@@ -1469,6 +1469,11 @@ const contractsData = [
       "url": "https://burnt.com"
     },
     "deprecated": false,
+    "mainnet": {
+      "code_id": "64",
+      "hash": "8CA6FBE2AAADAC520271B288B67DBD59F2543762BD64FFF38A5185F44540FB50",
+      "governance": "52"
+    },
     "testnet": {
       "code_id": "1878",
       "hash": "8CA6FBE2AAADAC520271B288B67DBD59F2543762BD64FFF38A5185F44540FB50",
@@ -1489,12 +1494,42 @@ const contractsData = [
       "url": "https://burnt.com"
     },
     "deprecated": false,
+    "mainnet": {
+      "code_id": "65",
+      "hash": "9053DF192CC0E43DD84A1664927AA85F6FAD36D79773FE17F3B10FC48D622486",
+      "governance": "53"
+    },
     "testnet": {
       "code_id": "1879",
       "hash": "9053DF192CC0E43DD84A1664927AA85F6FAD36D79773FE17F3B10FC48D622486",
       "network": "xion-testnet-2",
       "deployed_by": "xion15r5yxaeqwlx5zz5f2vwg87vz3m7d6dd5pdd6qp",
       "deployed_at": "2025-12-31T00:00:00.000Z"
+    }
+  },
+  {
+    "name": "TradeOS Vault Contract",
+    "description": "TradeOS Vault contract: claim verification, ownership, and emergency withdrawals for the TradeOS vault on XION",
+    "release": {
+      "url": "https://github.com/burnt-labs/tradeos-cw-sc",
+      "version": "v0.1.0"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "66",
+      "hash": "45055180AB8DCCBF88F27FEC06765F58F95D55199480374377A61481E965315C",
+      "governance": "56"
+    },
+    "testnet": {
+      "code_id": "2026",
+      "hash": "45055180AB8DCCBF88F27FEC06765F58F95D55199480374377A61481E965315C",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion1epzznazp28up4asses7jdcyqnw3n8lu7f5g9xs",
+      "deployed_at": "2026-03-12T14:35:08.568Z"
     }
   },
   {
