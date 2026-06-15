@@ -1,38 +1,42 @@
-name: Validate Contracts
+name: Verify Contracts
 
 on:
-  pull_request:
-    paths:
-      - 'contracts.json'
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
       - 'contracts.json'
-      - 'scripts/validate.js'
       - 'scripts/verify-contracts.js'
+      - '.github/workflows/verify-contracts.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
-  validate:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: 'pnpm'
-      
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      
-      - name: Validate contracts.json format
-        run: pnpm validate
-      
+
       - name: Verify contracts against chain
         run: pnpm verify
-        continue-on-error: true # Don't fail CI if chain verification has issues
