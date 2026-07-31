@@ -1550,10 +1550,10 @@
   },
   {
     "name": "MetaAccount (ZK-Email)",
-    "description": "Xion MetaAccount with ZK-Email authenticator support. cw2 contract info reports name 'account' version 0.1.1. Supports the Secp256K1, Secp256R1/Passkey, Ed25519, EthWallet, JWT and ZKEmail authenticator types. Allowed and pinned on xion-testnet-2 by governance proposal 63.",
+    "description": "Xion MetaAccount with ZK-Email authenticator support. cw2 contract info reports name 'account' version 0.1.1. Supports the Secp256K1, Secp256R1/Passkey, Ed25519, EthWallet, JWT and ZKEmail authenticator types. Allowed and pinned on xion-testnet-2 by governance proposal 63: https://github.com/burnt-labs/xion-testnet-2/pull/48",
     "release": {
-      "url": "https://github.com/burnt-labs/contracts",
-      "version": "0.1.1"
+      "url": "https://explorer.burnt.com/xion-testnet-2/tx/7E172E52BF0DCE43C44E173C1D02E058E835430709D02B6006E6DBBA177526E6",
+      "version": "7E172E52BF0DCE43C44E173C1D02E058E835430709D02B6006E6DBBA177526E6"
     },
     "author": {
       "name": "Burnt Labs",
@@ -1565,7 +1565,7 @@
       "hash": "D27A379FF65EB47A9E538E3A3D46101DE2A6C0B86BA3D0BF014C0403849414E6",
       "network": "xion-testnet-2",
       "deployed_by": "xion16kq8j4le6zjthc5khw5w3lx7mq5q2y9sj0qze4",
-      "deployed_at": "2025-12-31T00:00:00.000Z"
+      "deployed_at": "2026-01-14T09:31:32.000Z"
     }
   }
 ]
