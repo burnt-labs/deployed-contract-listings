@@ -1529,6 +1529,31 @@
     }
   },
   {
+    "name": "Marketplace Contract (v0.2.0)",
+    "description": "NFT marketplace contract v0.2.0: adds paginated listings, listings_by_seller and listings_by_collection queries, expired pending-sale reclaim, and zero-fee guards. Additive update to the Marketplace Contract (code 65); fresh instantiation recommended for the collection query.",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts/tree/e82deac8981acb18ea17fbab23f76a8c7f9d9795/contracts/marketplace",
+      "version": "0.2.0"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "69",
+      "hash": "65B2DA0691D332A24D81FF499A448A2D6542459142EA4033E8B937E5B52BBA76",
+      "governance": "62"
+    },
+    "testnet": {
+      "code_id": "2315",
+      "hash": "65B2DA0691D332A24D81FF499A448A2D6542459142EA4033E8B937E5B52BBA76",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion1haem6exxh8yahudm33zcy4r778hjthe0sfwlc9",
+      "deployed_at": "2026-09-15T17:42:10.000Z"
+    }
+  },
+  {
     "name": "Opacity Verifier",
     "description": "Verifies Opacity Network signatures for TEE-based attestations on XION",
     "release": {
