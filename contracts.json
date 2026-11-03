@@ -936,6 +936,24 @@
     }
   },
   {
+    "name": "Talis PoC Candy",
+    "description": "Talis PoC candy machine (phased public/private minting with per-phase limits, executed through the Talis proxied dispatcher). Stored at genesis by the genesis uploader xion1fdz3k3jerwsfzczjkz655qa986hljnwc47mgcg (no store-code transaction or governance proposal). cw2 contract info reports name 'crates.io:poc-candy' version 0.12.8; instances are labelled 'Talis random dispatcher'.",
+    "release": {
+      "url": "https://github.com/Talis-Art/talis_contracts_v2",
+      "version": "0.12.8"
+    },
+    "author": {
+      "name": "Talis",
+      "url": "https://talis.art/"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "39",
+      "hash": "E2A0468EF483CA32996EA081067169F16DB62B8739410F4DBD996560CA59E1D7",
+      "governance": "Genesis"
+    }
+  },
+  {
     "name": "Talis PoC Candy Mint",
     "description": "Talis PoC Candy Mint",
     "release": {
@@ -1436,6 +1454,60 @@
     }
   },
   {
+    "name": "BlockX Roulette (v1)",
+    "description": "Roulette betting contract for BlockX (users bet on numbers 0-36 in token rooms; results come from the BlockX Rand Generator via BandChain IBC). cw2 contract name 'Cosmos-first-roulette-gaming' version 1.0.0-alpha. Never instantiated on mainnet; superseded by code ID 62 (proposal 37).",
+    "release": {
+      "url": "https://github.com/NFTSpin",
+      "version": "1.0.0-alpha"
+    },
+    "author": {
+      "name": "BlockX",
+      "url": "https://twitter.com/BlockX_Fun"
+    },
+    "deprecated": true,
+    "mainnet": {
+      "code_id": "60",
+      "hash": "6142FD6C6DC682C518A1AAF26DB78625FA48110183E7148BAC48EBDC82D20151",
+      "governance": "29"
+    }
+  },
+  {
+    "name": "BlockX Rand Generator",
+    "description": "Generates verifiable random numbers for the BlockX Roulette contract by querying BandChain over IBC. cw2 contract info reports name 'crates.io:band-ibc-rand-generator' version 0.1.0.",
+    "release": {
+      "url": "https://github.com/NFTSpin",
+      "version": "0.1.0"
+    },
+    "author": {
+      "name": "BlockX",
+      "url": "https://twitter.com/BlockX_Fun"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "61",
+      "hash": "E88D0B219121B88915352982CE1477C36DDE1142FAB5D9DD5813466D46A11313",
+      "governance": "32"
+    }
+  },
+  {
+    "name": "BlockX Roulette (v2)",
+    "description": "Roulette betting contract for BlockX (users bet on numbers 0-36 in token rooms; results come from the BlockX Rand Generator via BandChain IBC). cw2 contract info reports name 'Cosmos-first-roulette-gaming' version 1.0.0-alpha. Replaces code ID 60.",
+    "release": {
+      "url": "https://github.com/NFTSpin",
+      "version": "1.0.0-alpha"
+    },
+    "author": {
+      "name": "BlockX",
+      "url": "https://twitter.com/BlockX_Fun"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "62",
+      "hash": "427DE7D299A90156B4A6AC3DC961D731A0CECDB71A62E2001300EB0FD2D38C3E",
+      "governance": "37"
+    }
+  },
+  {
     "name": "Treasury (v2)",
     "description": "Upgraded Treasury contract implementation",
     "release": {
@@ -1526,6 +1598,74 @@
       "network": "xion-testnet-2",
       "deployed_by": "xion1epzznazp28up4asses7jdcyqnw3n8lu7f5g9xs",
       "deployed_at": "2026-03-12T14:35:08.568Z"
+    }
+  },
+  {
+    "name": "User Map",
+    "description": "Open key/value registry any XION team can instantiate. Audit-hardened revision adding query pagination, an 8 KB value cap, and cw2 versioning with a migrate entry point (contract path contracts/user_map). cw2 contract info reports name 'user-map' version 0.1.0.",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts/pull/129",
+      "version": "471b4f3862efec0c930afd6ca5062a3d8bb9cf81"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "67",
+      "hash": "3CC8EFD7EA5A513412313DD537EA70D9F161FEF0F188747E93CFB4043FDE8AC7",
+      "governance": "59"
+    }
+  },
+  {
+    "name": "Dossier",
+    "description": "User-authorized encrypted data vault: encrypted user data is committed on-chain, enclave attestations authorize state transitions, and approved consumers receive selectively disclosed encrypted results (contract path crates/contract). Attestation-verifying execute paths require a compatible UltraHonk verification key to be registered on mainnet through governance.",
+    "release": {
+      "url": "https://github.com/burnt-labs/dossier/commit/79df78a38408ffb4ffad8534fab8de93d2ac44ce",
+      "version": "79df78a38408ffb4ffad8534fab8de93d2ac44ce"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "68",
+      "hash": "3CB0B4B914FA396C43FE351E701851EF0DEC653DA07E93D10943E0359899B090",
+      "governance": "61"
+    },
+    "testnet": {
+      "code_id": "2293",
+      "hash": "3CB0B4B914FA396C43FE351E701851EF0DEC653DA07E93D10943E0359899B090",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion1g6u0d3e025u2vkvum0c8npdx4jnc4sn2egt7u4",
+      "deployed_at": "2026-08-18T13:59:48.000Z"
+    }
+  },
+  {
+    "name": "Marketplace Contract (v0.2.0)",
+    "description": "Updated XION NFT marketplace (crate xion-nft-marketplace v0.2.0). Adds paginated listings, listings_by_seller and listings_by_collection queries, lets sellers reclaim expired pending sales, and rejects zero-price listings. Additive to code ID 65; migrated instances do not backfill the collection index.",
+    "release": {
+      "url": "https://github.com/burnt-labs/contracts",
+      "version": "e82deac8981acb18ea17fbab23f76a8c7f9d9795"
+    },
+    "author": {
+      "name": "Burnt Labs",
+      "url": "https://burnt.com"
+    },
+    "deprecated": false,
+    "mainnet": {
+      "code_id": "69",
+      "hash": "65B2DA0691D332A24D81FF499A448A2D6542459142EA4033E8B937E5B52BBA76",
+      "governance": "62"
+    },
+    "testnet": {
+      "code_id": "2315",
+      "hash": "65B2DA0691D332A24D81FF499A448A2D6542459142EA4033E8B937E5B52BBA76",
+      "network": "xion-testnet-2",
+      "deployed_by": "xion1haem6exxh8yahudm33zcy4r778hjthe0sfwlc9",
+      "deployed_at": "2026-09-15T17:42:10.000Z"
     }
   },
   {
